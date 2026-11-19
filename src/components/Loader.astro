@@ -42,6 +42,24 @@ const columns = Array.from({ length: 12 });
     background: var(--ink);
     transform-origin: 50% 0;
     box-shadow: 1px 0 0 var(--ink);
+    transition:
+      background-color 0.45s var(--ease-out),
+      box-shadow 0.45s var(--ease-out);
+  }
+  /* Fim do carregamento: campo creme com o nome em tinta, antes de as colunas subirem. */
+  .loader.is-cream .loader-col {
+    background: var(--paper);
+    box-shadow: 1px 0 0 var(--paper);
+  }
+  .loader.is-cream .loader-name,
+  .loader.is-cream .loader-role {
+    color: var(--ink);
+  }
+  .loader.is-cream .loader-bar {
+    background: color-mix(in srgb, var(--ink) 20%, transparent);
+  }
+  .loader.is-cream .loader-bar span {
+    background: var(--ink);
   }
   .loader-name,
   .loader-role {
@@ -59,6 +77,14 @@ const columns = Array.from({ length: 12 });
   .loader-role {
     right: var(--pad);
     color: var(--amber);
+  }
+  .loader-name,
+  .loader-role,
+  .loader-bar,
+  .loader-bar span {
+    transition:
+      color 0.45s var(--ease-out),
+      background-color 0.45s var(--ease-out);
   }
   .loader-count-mask {
     position: absolute;

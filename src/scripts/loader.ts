@@ -49,7 +49,8 @@ export function runLoader(): Promise<void> {
           el.remove();
         },
       });
-      exit.to(state, { v: 100, duration: 0.55, ease: 'power2.inOut', onUpdate: render });
+      exit.call(() => el.classList.add('is-cream'), undefined, 0);
+      exit.to(state, { v: 100, duration: 0.55, ease: 'power2.inOut', onUpdate: render }, 0);
       exit.to(count, { yPercent: -105, duration: 0.7, ease: 'expo.in' }, '+=0.1');
       exit.to(meta, { yPercent: -120, opacity: 0, duration: 0.5, ease: 'expo.in', stagger: 0.05 }, '<');
       exit.to(bar.parentElement, { scaleX: 0, transformOrigin: '100% 50%', duration: 0.6, ease: 'expo.in' }, '<');
