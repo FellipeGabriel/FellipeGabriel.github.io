@@ -1,11 +1,11 @@
 ---
 import { getImage } from 'astro:assets';
-import cliffs from '../assets/space/cosmic-cliffs.jpg';
+import heroPhoto from '../assets/photos/laptop-keyboard.jpg';
 import { ui, type Lang } from '../data/content';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
-const fill = await getImage({ src: cliffs, width: 1800, format: 'webp', quality: 85 });
+const fill = await getImage({ src: heroPhoto, width: 1800, format: 'webp', quality: 85 });
 const columns = Array.from({ length: 12 });
 ---
 <div class="loader" aria-hidden="true" data-loader style={`--loader-fill: url(${fill.src})`}>

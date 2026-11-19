@@ -1,8 +1,8 @@
-"""Gradação de filme 'Halação' para as imagens do Webb.
+"""Gradação de filme 'Halação' para as fotos do site.
 
 Uso:
   python3 scripts/film-grade.py ENTRADA.jpg SAIDA.jpg [opções]
-  python3 scripts/film-grade.py --all        # regera src/assets/space/*.jpg a partir de raw/
+  python3 scripts/film-grade.py --all        # regera src/assets/photos/*.jpg a partir de raw/
 
 Os raios de bloom, halação e grão foram calibrados para ~1800px de largura e são
 multiplicados por largura/1800 (≈1.33 em 2400px). Ajustes por imagem ficam em PER_IMAGE.
@@ -83,11 +83,7 @@ def grade(x, s=1.0, p=DEFAULTS):
     return np.clip(grain(x, p['grain'], .9*s), 0, 1)
 
 # Ajustes por imagem (ver README). Só o que difere de DEFAULTS.
-PER_IMAGE: dict[str, dict] = {
-    # O disco do planeta estourava para creme e perdia o ciano: menos bloom e halação,
-    # ombro mais baixo e quase toda a saturação original.
-    'uranus.jpg': dict(shoulder=.88, sat=.95, bloom=.1, halation=.35),
-}
+PER_IMAGE: dict[str, dict] = {}
 
 MAX_W = 2400
 
@@ -104,15 +100,15 @@ if __name__ == '__main__':
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('src', nargs='?')
     ap.add_argument('dst', nargs='?')
-    ap.add_argument('--all', action='store_true', help='regera todas as imagens de src/assets/space/raw/')
+    ap.add_argument('--all', action='store_true', help='regera todas as fotos de src/assets/photos/raw/')
     for k, v in DEFAULTS.items():
         ap.add_argument(f'--{k}', type=float, help=f'padrão {v}')
     a = ap.parse_args()
     ov = {k: getattr(a, k) for k in DEFAULTS if getattr(a, k) is not None}
     if a.all:
-        space = Path(__file__).resolve().parent.parent/'src'/'assets'/'space'
-        for f in sorted((space/'raw').glob('*.jpg')):
-            run(f, space/f.name, ov)
+        photos = Path(__file__).resolve().parent.parent/'src'/'assets'/'photos'
+        for f in sorted((photos/'raw').glob('*.jpg')):
+            run(f, photos/f.name, ov)
     elif a.src and a.dst:
         run(a.src, a.dst, ov)
     else:
