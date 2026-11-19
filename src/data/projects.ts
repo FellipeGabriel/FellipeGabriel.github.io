@@ -6,44 +6,44 @@ import lyfiaMetodo from '../assets/projects/lyfia/metodo.png';
 import lyfiaDados from '../assets/projects/lyfia/dados.png';
 import lyfiaMobile from '../assets/projects/lyfia/mobile.png';
 import recHome from '../assets/projects/recuperavc/home.png';
-import recFrase from '../assets/projects/recuperavc/frase.png';
-import recFala from '../assets/projects/recuperavc/fala.png';
-import recMotor from '../assets/projects/recuperavc/motor.png';
-import recRelatorio from '../assets/projects/recuperavc/relatorio.png';
+import recFala from '../assets/projects/recuperavc/fala.jpg';
+import recPreferencias from '../assets/projects/recuperavc/preferencias.jpg';
+import recRelatorio from '../assets/projects/recuperavc/relatorio.jpg';
 
 export type Slug = 'lyfia' | 'recuperavc';
 
-type Link = { label: string; href: string };
+type Link = { label: string; href: string; kind: 'web' | 'play' | 'github' };
 type Shot = { src: ImageMetadata; alt: string; caption?: string };
 type Section = { heading: string; body: string[]; shot?: Shot };
 
 export type Project = {
   slug: Slug;
   name: string;
-  field: 'cobalt' | 'ink';
+  field: 'petrol' | 'ink';
   kind: string;
   lead: string;
   facts: string[];
   links: Link[];
   cover: Shot;
   secondary: Shot[];
+  qr?: { url: string; label: string };
   meta: { label: string; value: string }[];
   sections: Section[];
 };
 
-const lyfiaLinks = {
-  pt: [{ label: 'Abrir o painel', href: 'https://lyfia.pages.dev' }],
-  en: [{ label: 'Open the dashboard', href: 'https://lyfia.pages.dev' }],
+const lyfiaLinks: Record<Lang, Link[]> = {
+  pt: [{ label: 'Abrir o painel', href: 'https://lyfia.pages.dev', kind: 'web' }],
+  en: [{ label: 'Open the dashboard', href: 'https://lyfia.pages.dev', kind: 'web' }],
 };
 
-const recLinks = {
+const recLinks: Record<Lang, Link[]> = {
   pt: [
-    { label: 'Ver na Google Play', href: 'https://play.google.com/store/apps/details?id=com.recuperavc' },
-    { label: 'Código no GitHub', href: 'https://github.com/PauloBayer/recuperavc' },
+    { label: 'Ver na Google Play', href: 'https://play.google.com/store/apps/details?id=com.recuperavc', kind: 'play' },
+    { label: 'Código no GitHub', href: 'https://github.com/PauloBayer/recuperavc', kind: 'github' },
   ],
   en: [
-    { label: 'Get it on Google Play', href: 'https://play.google.com/store/apps/details?id=com.recuperavc' },
-    { label: 'Code on GitHub', href: 'https://github.com/PauloBayer/recuperavc' },
+    { label: 'Get it on Google Play', href: 'https://play.google.com/store/apps/details?id=com.recuperavc', kind: 'play' },
+    { label: 'Code on GitHub', href: 'https://github.com/PauloBayer/recuperavc', kind: 'github' },
   ],
 };
 
@@ -52,7 +52,7 @@ export const projects: Record<Lang, Project[]> = {
     {
       slug: 'lyfia',
       name: 'Lyfia',
-      field: 'cobalt',
+      field: 'petrol',
       kind: 'Pesquisa e painel público, 2026',
       lead: 'Mede quantas máquinas de hemodiálise do SUS estão ao alcance de cada região de saúde do Brasil, de 2017 a 2024.',
       facts: [
@@ -121,9 +121,10 @@ export const projects: Record<Lang, Project[]> = {
       links: recLinks.pt,
       cover: { src: recHome, alt: 'Tela inicial do RecuperAVC com os três testes: raciocínio, reconhecimento de voz e coordenação motora.' },
       secondary: [
-        { src: recFala, alt: 'Teste de fala: o app pede para pronunciar uma frase e mostra o botão de gravação.' },
-        { src: recFrase, alt: 'Teste de linguagem: palavras embaralhadas para montar a frase.' },
+        { src: recFala, alt: 'Teste de fala durante a gravação: a frase a pronunciar e o botão para cancelar.' },
+        { src: recPreferencias, alt: 'Preferências do app no modo escuro: alto contraste, modo escuro e tamanho do texto.' },
       ],
+      qr: { url: 'https://play.google.com/store/apps/details?id=com.recuperavc', label: 'Aponte a câmera do celular para abrir na Google Play.' },
       meta: [
         { label: 'Ano', value: '2025–2026' },
         { label: 'Tipo', value: 'TCC na UFPR' },
@@ -145,7 +146,7 @@ export const projects: Record<Lang, Project[]> = {
             'No teste de fala, a pessoa lê uma frase em voz alta e o app calcula palavras por minuto e taxa de erro.',
             'No de linguagem, ela reorganiza as palavras de uma frase embaralhada, e o app mede o tempo e os erros. No de coordenação motora, ela toca um botão o máximo de vezes que conseguir, com o botão parado ou mudando de lugar.',
           ],
-          shot: { src: recMotor, alt: 'Tela antes do teste de coordenação motora: escolha da mão, se é a dominante e do modo do botão.', caption: 'Antes do teste motor, o app registra qual mão vai ser usada e se ela é a dominante.' },
+          shot: { src: recRelatorio, alt: 'Tela de relatórios do RecuperAVC com filtros por período, mão utilizada e mão dominante.', caption: 'Os relatórios mostram a evolução de cada teste por período, com filtro pela mão usada.' },
         },
         {
           heading: 'Transcrição sem internet',
@@ -160,7 +161,7 @@ export const projects: Record<Lang, Project[]> = {
             'Kotlin, Jetpack Compose e arquitetura MVVM, com o Room guardando os resultados no aparelho.',
             'Tem modo claro, escuro e de alto contraste, ajuste do tamanho da fonte e relatórios em PDF com gráficos.',
           ],
-          shot: { src: recRelatorio, alt: 'Tela de relatórios do RecuperAVC com filtro de datas e gráfico de barras do tempo até o acerto.', caption: 'Os relatórios mostram a evolução de cada teste por período.' },
+          shot: { src: recPreferencias, alt: 'Preferências do RecuperAVC no modo escuro, com opções de alto contraste, modo escuro e tamanho do texto.', caption: 'As preferências ajustam contraste, tema e tamanho do texto, com uma prévia na própria tela.' },
         },
         {
           heading: 'Na loja',
@@ -175,7 +176,7 @@ export const projects: Record<Lang, Project[]> = {
     {
       slug: 'lyfia',
       name: 'Lyfia',
-      field: 'cobalt',
+      field: 'petrol',
       kind: 'Research and public dashboard, 2026',
       lead: "Measures how many of Brazil's public hemodialysis machines are within reach of each health region, from 2017 to 2024.",
       facts: [
@@ -244,9 +245,10 @@ export const projects: Record<Lang, Project[]> = {
       links: recLinks.en,
       cover: { src: recHome, alt: 'RecuperAVC home screen with the three tests: reasoning, speech recognition, and motor coordination.' },
       secondary: [
-        { src: recFala, alt: 'Speech test: the app asks the user to read a sentence aloud and shows the record button.' },
-        { src: recFrase, alt: 'Language test: shuffled words to rebuild the sentence.' },
+        { src: recFala, alt: 'Speech test while recording: the sentence to read and the cancel button.' },
+        { src: recPreferencias, alt: 'App preferences in dark mode: high contrast, dark mode, and text size.' },
       ],
+      qr: { url: 'https://play.google.com/store/apps/details?id=com.recuperavc', label: 'Point your phone camera here to open it on Google Play.' },
       meta: [
         { label: 'Year', value: '2025–2026' },
         { label: 'Type', value: 'Capstone project at UFPR' },
@@ -268,7 +270,7 @@ export const projects: Record<Lang, Project[]> = {
             'In the speech test, the person reads a sentence aloud and the app computes words per minute and word error rate.',
             'In the language test, they put the words of a shuffled sentence back in order, and the app measures time and errors. In the motor test, they tap a button as many times as they can, with the button either fixed or moving around the screen.',
           ],
-          shot: { src: recMotor, alt: 'Screen before the motor coordination test: choosing the hand, whether it is dominant, and the button mode.', caption: 'Before the motor test, the app records which hand is used and whether it is the dominant one.' },
+          shot: { src: recRelatorio, alt: 'RecuperAVC reports screen with filters for period, hand used, and dominant hand.', caption: 'Reports show how each test changes over time, filtered by the hand used.' },
         },
         {
           heading: 'Offline transcription',
@@ -283,7 +285,7 @@ export const projects: Record<Lang, Project[]> = {
             'Kotlin, Jetpack Compose, and an MVVM architecture, with Room storing results on the device.',
             'It has light, dark, and high-contrast themes, adjustable font size, and PDF reports with charts.',
           ],
-          shot: { src: recRelatorio, alt: 'RecuperAVC reports screen with a date filter and a bar chart of time to a correct answer.', caption: 'Reports show how each test changes over time.' },
+          shot: { src: recPreferencias, alt: 'RecuperAVC preferences in dark mode, with high contrast, dark mode, and text size options.', caption: 'Preferences adjust contrast, theme, and text size, with a live preview on the same screen.' },
         },
         {
           heading: 'On Google Play',

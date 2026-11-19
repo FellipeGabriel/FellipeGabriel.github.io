@@ -11,10 +11,9 @@ const t = ui[lang].contact;
 const h = ui[lang].hero;
 const [user, domain] = EMAIL.split('@');
 ---
-<section id={sectionIds[lang].contact} class="contact field-orange" data-field="orange" aria-labelledby="contact-title">
+<section id={sectionIds[lang].contact} class="contact field-amber" data-field="amber" aria-labelledby="contact-title">
   <figure class="contact-img" data-contact-img>
     <Picture src={pismis} formats={['avif', 'webp']} widths={[480, 800, 1200]} sizes="(max-width: 899px) 100vw, 34vw" alt="" loading="lazy" />
-    <figcaption class="label contact-caption">{t.caption}</figcaption>
   </figure>
   <div class="contact-main">
     <h2 id="contact-title" class="display contact-title" data-fit data-split>{t.heading}</h2>
@@ -62,7 +61,7 @@ const [user, domain] = EMAIL.split('@');
     line-height: 0.98;
     letter-spacing: -0.015em;
     text-decoration: none;
-    border-bottom: 4px solid currentColor;
+    border-bottom: 4px solid var(--ink);
     padding-bottom: 0.15em;
     width: fit-content;
     max-width: 100%;
@@ -105,15 +104,6 @@ const [user, domain] = EMAIL.split('@');
     height: 100%;
     object-fit: cover;
     object-position: 50% 60%;
-  }
-  .contact-caption {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 0.7rem 1rem 0.8rem;
-    background: var(--ink);
-    color: var(--paper);
   }
   @media (max-width: 899px) {
     .contact {

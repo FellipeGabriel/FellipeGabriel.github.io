@@ -12,10 +12,10 @@ interface Props {
   path: string;
   page: 'home' | 'project';
   projectName?: string;
-  topField?: 'orange' | 'ink' | 'paper' | 'cobalt';
+  topField?: 'amber' | 'ink' | 'paper' | 'petrol';
 }
 
-const { lang, title, description, altPath, path, page, projectName, topField = 'orange' } = Astro.props;
+const { lang, title, description, altPath, path, page, projectName, topField = 'amber' } = Astro.props;
 const t = ui[lang];
 const other: Lang = lang === 'pt' ? 'en' : 'pt';
 const site = Astro.site!;
@@ -36,7 +36,7 @@ const pageDescription = description ?? t.description;
     <link rel="alternate" hreflang={ui[other].htmlLang} href={new URL(altPath, site).href} />
     <link rel="alternate" hreflang="x-default" href={new URL('/', site).href} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#ff4f1a" />
+    <meta name="theme-color" content="#0f3640" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />

@@ -1,6 +1,9 @@
 ---
 import { Picture } from 'astro:assets';
 import Icon from './Icon.astro';
+import ProjectLink from './ProjectLink.astro';
+import QrCode from './QrCode.astro';
+import cauldron from '../assets/space/nebulous-cauldron.jpg';
 import { ui, routes, type Lang } from '../data/content';
 import { projects } from '../data/projects';
 import { sectionIds } from '../data/sections';
@@ -13,9 +16,24 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
 ---
 <section id={sectionIds[lang].projects} class="projects" aria-labelledby="projects-title" data-projects>
   <div class="track" data-track>
-    <div class="panel panel-intro field-paper" data-field="paper">
+    <div class="panel panel-intro field-ink" data-field="ink">
+      <div class="intro-img" aria-hidden="true">
+        <Picture src={cauldron} formats={['avif', 'webp']} widths={[800, 1400, 2200]} sizes="100vw" alt="" loading="lazy" />
+      </div>
       <h2 id="projects-title" class="display intro-title" data-fit data-split>{t.heading}</h2>
-      <p class="lead">{t.lead}</p>
+      <div class="intro-foot">
+        <p class="lead">{t.lead}</p>
+        <ol class="intro-index">
+          {list.map((p) => (
+            <li>
+              <a href={routes[lang].project(p.slug)}>
+                <span class="intro-name">{p.name}</span>
+                <span class="label">{p.kind}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
     </div>
 
     {list.map((p) => (
@@ -41,14 +59,15 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
               </div>
             </>
           ) : (
-            <div class="phones">
-              {[p.cover, ...p.secondary].map((s, i) => (
-                <div class={`shot shot-phone phone-${i}`} data-depth={[0.05, -0.06, 0.07][i]}>
-                  <Picture src={s.src} formats={['avif', 'webp']} widths={[300, 560]} sizes="(max-width: 760px) 30vw, 14vw" alt={s.alt} loading="lazy" />
+            <div class="phones" data-depth="0.03">
+              {[p.cover, ...p.secondary].map((s) => (
+                <div class="phone">
+                  <Picture src={s.src} formats={['avif', 'webp']} widths={[320, 640]} sizes="(max-width: 760px) 30vw, 16vw" alt={s.alt} loading="lazy" />
                 </div>
               ))}
             </div>
           )}
+          {p.qr && <QrCode url={p.qr.url} label={p.qr.label} class="plate-qr" />}
           <p class="display project-ghost" aria-hidden="true">{p.name}</p>
         </div>
 
@@ -60,9 +79,7 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
           </ul>
           <div class="project-links">
             <a class="btn btn-solid" href={routes[lang].project(p.slug)}>{t.howItWasMade}<Icon name="arrow-right" /></a>
-            {p.links.map((l) => (
-              <a class="arrow-link" href={l.href} target="_blank" rel="noopener">{l.label}<Icon name="arrow-up-right" /></a>
-            ))}
+            {p.links.map((l) => <ProjectLink href={l.href} label={l.label} kind={l.kind} />)}
           </div>
         </div>
       </article>
@@ -84,18 +101,76 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
     container-type: inline-size;
     padding: clamp(5rem, 12svh, 8rem) var(--pad) var(--pad);
   }
+
   .panel-intro {
-    display: grid;
-    align-content: space-between;
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
+    min-height: 100svh;
+    overflow: hidden;
   }
-  @media (min-width: 900px) {
-    .panel-intro {
-      min-height: 70svh;
-    }
+  .intro-img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .intro-img :global(picture),
+  .intro-img :global(img) {
+    width: 100%;
+    height: 100%;
+  }
+  .intro-img :global(img) {
+    object-fit: cover;
+    object-position: 50% 45%;
   }
   .intro-title {
-    font-size: clamp(3.5rem, 12vw, 22rem);
+    position: relative;
+    z-index: 1;
+    color: var(--paper);
+    font-size: clamp(3.5rem, 15vw, 22rem);
+  }
+  .intro-foot {
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--gutter);
+    align-items: end;
+  }
+  .intro-foot .lead {
+    grid-column: 1 / span 5;
+    background: var(--ink);
+    padding: 1.25rem 1.5rem;
+    max-width: none;
+  }
+  .intro-index {
+    grid-column: 7 / -1;
+    display: grid;
+    background: var(--ink);
+    padding: 0.5rem 1.5rem;
+  }
+  .intro-index li + li {
+    border-top: 1px solid color-mix(in srgb, var(--paper) 35%, transparent);
+  }
+  .intro-index a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.85rem 0;
+    text-decoration: none;
+    transition: color 0.3s var(--ease-out);
+  }
+  .intro-index a:hover {
+    color: var(--amber);
+  }
+  .intro-name {
+    font-size: var(--step-3);
+    font-weight: 900;
+    font-variation-settings: 'wdth' 62;
+    text-transform: uppercase;
+    line-height: 0.9;
   }
 
   .panel-project {
@@ -107,16 +182,16 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
     display: flex;
     flex-direction: column;
   }
-  .field-cobalt {
-    --ghost: var(--cobalt);
-    --plate-bg: var(--paper);
+  .field-petrol {
+    --ghost: var(--petrol);
+    --plate-bg: var(--lyfia-cream);
   }
   .field-ink {
     --ghost: var(--ink);
-    --plate-bg: var(--orange);
+    --plate-bg: var(--recupera-green);
   }
   .field-ink .project-title {
-    color: var(--orange);
+    color: var(--amber);
   }
   .project-title,
   .project-ghost {
@@ -156,12 +231,18 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
     overflow: hidden;
   }
   .shot :global(picture),
-  .shot :global(img) {
+  .shot :global(img),
+  .phone :global(picture),
+  .phone :global(img) {
     width: 100%;
     height: 100%;
   }
-  .shot :global(img) {
+  .shot :global(img),
+  .phone :global(img) {
     object-fit: cover;
+    object-position: 50% 0;
+  }
+  .project-lyfia .shot-main :global(img) {
     object-position: 0 0;
   }
   .project-lyfia .shot-main {
@@ -175,23 +256,34 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
     border: 6px solid var(--ink);
     z-index: 3;
   }
-  .phones .shot-phone {
-    width: 30%;
-    aspect-ratio: 720 / 1300;
+  .phones {
+    position: absolute;
+    left: 3%;
+    right: 3%;
+    bottom: 6%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 3%;
+  }
+  .phone {
+    flex: none;
+    width: 29%;
+    aspect-ratio: 720 / 1530;
     border: 6px solid var(--ink);
     background: var(--ink);
+    overflow: hidden;
   }
-  .phone-0 {
-    left: 3%;
-    bottom: 9%;
+  .project-plate :global(.plate-qr) {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 3;
+    flex-direction: row-reverse;
+    color: var(--ink);
   }
-  .phone-1 {
-    left: 35%;
-    bottom: 3%;
-  }
-  .phone-2 {
-    left: 67%;
-    bottom: 15%;
+  .project-plate :global(.plate-qr .qr-code) {
+    width: 6.5rem;
   }
 
   .project-body {
@@ -204,9 +296,6 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
   }
   .project-kind {
     color: var(--accent);
-  }
-  .field-cobalt .project-kind {
-    color: var(--paper);
   }
   .facts {
     border-top: var(--rule) solid currentColor;
@@ -239,11 +328,6 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
       height: 100svh;
       min-height: 0;
       flex: none;
-    }
-    :global(html.motion) .panel-intro {
-      width: 58vw;
-    }
-    :global(html.motion) .panel-project {
       width: 100vw;
     }
     :global(html.motion) .track-progress {
@@ -259,7 +343,7 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
       display: block;
       height: 100%;
       width: 100%;
-      background: var(--orange);
+      background: var(--amber);
       transform-origin: 0 50%;
       transform: scaleX(0);
     }
@@ -276,6 +360,13 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
   }
 
   @media (max-width: 899px) {
+    .panel-intro {
+      min-height: 0;
+    }
+    .intro-foot .lead,
+    .intro-index {
+      grid-column: 1 / -1;
+    }
     .panel-project {
       min-height: 0;
       padding-top: 4.5rem;

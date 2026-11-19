@@ -228,7 +228,7 @@ function projectsWall() {
       scrollTrigger: {
         trigger: section,
         start: 'top top',
-        end: () => `+=${distance()}`,
+        end: () => `+=${distance() * 1.4}`,
         pin: true,
         scrub: 0.6,
         invalidateOnRefresh: true,

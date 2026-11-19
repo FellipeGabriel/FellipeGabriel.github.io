@@ -2,11 +2,13 @@
 name: Fellipe Gabriel, portfólio
 description: Portfólio bilíngue de um desenvolvedor full stack, montado como uma série de cartazes tipográficos suíços.
 colors:
-  signal-orange: "#ff4f1a"
-  press-ink: "#111111"
+  deep-petrol: "#0f3640"
+  nebula-amber: "#f2b33d"
+  press-ink: "#0c1114"
   poster-paper: "#e9eaea"
   poster-paper-shade: "#d3d5d6"
-  print-cobalt: "#2b44ff"
+  lyfia-cream: "#e9d9bb"
+  recupera-green: "#94bd3b"
 typography:
   display:
     fontFamily: "Archivo Variable, Archivo, system-ui, sans-serif"
@@ -54,21 +56,21 @@ spacing:
   gutter: "clamp(12px, 1.6vw, 28px)"
   rule: "2px"
 components:
-  button-solid-on-orange:
+  button-solid-on-amber:
     backgroundColor: "{colors.press-ink}"
-    textColor: "{colors.poster-paper}"
+    textColor: "{colors.nebula-amber}"
     rounded: "{rounded.none}"
     padding: "0.85rem 1.25rem"
     height: "3.25rem"
   button-solid-on-ink:
-    backgroundColor: "{colors.signal-orange}"
+    backgroundColor: "{colors.nebula-amber}"
     textColor: "{colors.press-ink}"
     rounded: "{rounded.none}"
     padding: "0.85rem 1.25rem"
     height: "3.25rem"
-  button-solid-on-cobalt:
-    backgroundColor: "{colors.poster-paper}"
-    textColor: "{colors.print-cobalt}"
+  button-solid-on-petrol:
+    backgroundColor: "{colors.nebula-amber}"
+    textColor: "{colors.press-ink}"
     rounded: "{rounded.none}"
     padding: "0.85rem 1.25rem"
     height: "3.25rem"
@@ -100,23 +102,28 @@ As imagens do espaço (James Webb) são material de cartaz, não tema. Elas apar
 
 ## Colors
 
-Quatro cores chapadas e um cinza de apoio; cada seção escolhe um campo e as outras viram tinta e destaque sobre ele.
+Petróleo e âmbar tirados da própria imagem dos Cosmic Cliffs (o céu e as nuvens), mais tinta e papel; cada seção escolhe um campo e as outras cores viram texto e destaque sobre ele.
 
 ### Primary
-- **Laranja-sinal** (signal-orange): campo do hero e do contato; destaque sobre preto (anos das publicações, status, título do RecuperAVC). Nunca como cor de texto pequeno sobre papel.
+- **Petróleo profundo** (deep-petrol): campo do hero, do cartaz do Lyfia e do cabeçalho do estudo de caso do Lyfia; destaque sobre papel.
 
 ### Secondary
-- **Cobalto de impressão** (print-cobalt): campo do cartaz do Lyfia e do cabeçalho do estudo de caso do Lyfia; destaque sobre papel. Sobre cobalto, o único texto é papel.
+- **Âmbar de nebulosa** (nebula-amber): a cor de contraste. Nome no hero, título do RecuperAVC, anos das publicações, botão sólido sobre petróleo e preto, e o campo inteiro do contato. Nunca como texto sobre papel.
 
 ### Neutral
-- **Tinta de prensa** (press-ink): texto sobre laranja e papel; campo das publicações, do cartaz do RecuperAVC e do rodapé.
-- **Papel de cartaz** (poster-paper): campo das seções de leitura (Projetos, Experiência, Sobre, corpo dos estudos de caso); texto sobre preto e cobalto. Cinza neutro de propósito: o tom creme foi descartado.
-- **Sombra do papel** (poster-paper-shade): fundo de placas enquanto a imagem carrega; trilho da barra de rolagem.
+- **Tinta de prensa** (press-ink): texto sobre âmbar e papel; campo das publicações, do cartaz do RecuperAVC e do rodapé.
+- **Papel de cartaz** (poster-paper): campo das seções de leitura; texto sobre petróleo, preto e imagem.
+- **Sombra do papel** (poster-paper-shade): fundo de placa enquanto a imagem carrega.
+
+### Placas de projeto
+- **Creme do Lyfia** (lyfia-cream) e **verde do RecuperAVC** (recupera-green): fundo da placa de cada projeto, tirados das cores do próprio produto. Só aparecem dentro da placa.
 
 ### Named Rules
 **The One Field Rule.** Cada seção tem um único campo de cor que vai de borda a borda. Nada de cartões ou caixas coloridas dentro do campo.
 
-**The Field Sets the Ink Rule.** A cor do texto e dos botões é decidida pelo campo: laranja leva tinta, preto leva papel com destaque laranja, papel leva tinta com destaque cobalto, cobalto leva só papel. A barra de navegação segue o campo que está sob ela.
+**The Field Sets the Ink Rule.** A cor do texto e dos botões é decidida pelo campo: petróleo leva papel com destaque âmbar, âmbar leva tinta, preto leva papel com destaque âmbar, papel leva tinta com destaque petróleo. A barra de navegação segue o campo sob ela.
+
+**The Product Plate Rule.** A placa de um projeto usa a cor do próprio produto, não a do site.
 
 ## Typography
 
@@ -162,7 +169,7 @@ Retângulos retos em tudo: placas, botões, menu, capturas. Raio zero. Divisões
 
 ### Buttons
 - **Shape:** retângulo reto (0px), borda de 2px na cor do texto, altura mínima de 3.25rem.
-- **Sólido:** fundo e texto definidos pelo campo (tinta sobre laranja e papel, laranja sobre preto, papel sobre cobalto).
+- **Sólido:** fundo e texto definidos pelo campo (tinta com texto âmbar sobre âmbar, petróleo sobre papel, âmbar com texto tinta sobre petróleo e preto).
 - **Contorno:** só a borda, na cor do texto do campo.
 - **Hover / Focus:** o contorno se enche com a cor do texto e o texto assume a cor do campo; o sólido esvazia. Foco com contorno de 3px a 4px de distância, na cor atual.
 
@@ -170,13 +177,16 @@ Retângulos retos em tudo: placas, botões, menu, capturas. Raio zero. Divisões
 - Texto em negrito com fio inferior de 2px e seta desenhada em SVG; no hover, o espaçamento entre letras abre.
 
 ### Navigation
-- Barra fixa no topo em rótulo (650, largura 112). Fundo transparente no topo da página; depois assume o campo sob ela. A seção atual fica marcada com peso 850 e fio de 4px; o hover desenha um fio de 2px da esquerda para a direita. Em telas de até 760px, um botão "Menu" abre um diálogo de tela cheia em laranja com os links em display. O seletor PT/EN fica no fim da barra e no menu.
+- Barra fixa no topo em rótulo (650, largura 112). Fundo transparente no topo da página; depois assume o campo sob ela. A seção atual fica marcada com peso 850 e fio de 4px; o hover desenha um fio de 2px da esquerda para a direita. Em telas de até 760px, um botão "Menu" abre um diálogo de tela cheia em âmbar com os links em display. O seletor PT/EN fica no fim da barra e no menu.
 
 ### Cartaz de projeto (componente-assinatura)
 - Campo do projeto, nome em display atravessando a borda de uma placa, placa com capturas reais, bloco de texto embaixo à esquerda (rótulo, lead, três fatos entre fios, links). A cópia do nome dentro da placa usa a cor do campo e desliza junto com o título na rolagem lateral.
 
-### Legenda de crédito
-- Rótulo pequeno com o crédito da imagem (NASA, ESA, CSA e STScI). Sobre foto, vai numa faixa de tinta sólida.
+### Links de loja e código
+- Google Play com o logo oficial, GitHub com o símbolo em SVG, endereço web com seta. No RecuperAVC, um QR code em SVG (tinta sobre papel) leva à loja; só aparece a partir de 900px.
+
+### Imagem com título
+- Abertura de Projetos e bloco "Próximo projeto": imagem do Webb de borda a borda com o título em display por cima; textos menores ficam em blocos de tinta sólida.
 
 ## Do's and Don'ts
 
@@ -184,12 +194,12 @@ Retângulos retos em tudo: placas, botões, menu, capturas. Raio zero. Divisões
 - **Do** dar a cada seção um único campo de cor de borda a borda.
 - **Do** ajustar o título de seção à largura do cartaz com `data-fit` e manter um tamanho em `vw` de reserva.
 - **Do** usar a troca de cor na borda da imagem quando o texto cruzar uma placa.
-- **Do** manter fotos e capturas em retângulos retos, sem moldura, com crédito visível nas imagens do Webb.
+- **Do** manter fotos e capturas em retângulos retos, sem moldura; o crédito das imagens do Webb fica no rodapé, em uma linha.
 - **Do** desligar Lenis, a parede horizontal e as entradas animadas com `prefers-reduced-motion`.
 
 ### Don't:
 - **Don't** usar raio, sombra, gradiente ou vidro.
 - **Don't** colocar rótulo ou sobretítulo pequeno acima de um título; status e categoria vêm depois do título.
-- **Don't** usar laranja como texto pequeno sobre papel, nem tinta ou laranja sobre cobalto.
+- **Don't** usar âmbar como texto sobre papel, nem tinta sobre petróleo.
 - **Don't** usar frases temáticas ou trocadilhos de espaço; as imagens do Webb são material, não assunto.
 - **Don't** dar mais peso visual a um projeto do que ao outro na parede da home.

@@ -25,7 +25,6 @@ export const ui = {
       emailCta: 'Enviar e-mail',
       copy: 'Copiar e-mail',
       copied: 'E-mail copiado',
-      caption: 'Nebulosa de Carina, Webb/NIRCam. NASA, ESA, CSA e STScI',
     },
     projects: {
       heading: 'Projetos',
@@ -50,10 +49,9 @@ export const ui = {
     contact: {
       heading: 'Contato',
       lead: 'Para falar sobre vagas ou sobre algum dos projetos, o caminho mais rápido é o e-mail.',
-      caption: 'Pismis 24, Webb/NIRCam. NASA, ESA, CSA e STScI',
     },
     footer: {
-      credits: 'Imagens do espaço: NASA, ESA, CSA e STScI, via ESA/Webb (CC BY 4.0).',
+      credits: 'Imagens: NASA, ESA, CSA, STScI (CC BY 4.0)',
       source: 'Código deste site',
     },
     caseStudy: {
@@ -84,7 +82,6 @@ export const ui = {
       emailCta: 'Send an email',
       copy: 'Copy email',
       copied: 'Email copied',
-      caption: 'Carina Nebula, Webb/NIRCam. NASA, ESA, CSA, and STScI',
     },
     projects: {
       heading: 'Projects',
@@ -109,10 +106,9 @@ export const ui = {
     contact: {
       heading: 'Contact',
       lead: 'To talk about a role or one of the projects, email is the fastest way to reach me.',
-      caption: 'Pismis 24, Webb/NIRCam. NASA, ESA, CSA, and STScI',
     },
     footer: {
-      credits: 'Space images: NASA, ESA, CSA, and STScI, via ESA/Webb (CC BY 4.0).',
+      credits: 'Images: NASA, ESA, CSA, STScI (CC BY 4.0)',
       source: 'Source code for this site',
     },
     caseStudy: {
@@ -164,7 +160,7 @@ export const work: Record<Lang, { jobs: Job[]; education: Job[] }> = {
         period: 'out 2022 – dez 2026 (previsão)',
         lead: 'Pesquisa em saúde digital com o Prof. Alessandro Brawerman.',
         items: [
-          'Lyfia e RecuperAVC, aceitos em congressos em 2026 e 2027.',
+          'Lyfia e RecuperAVC, aceitos em três congressos em 2026.',
           'Projetos de disciplina com Docker Compose, como microsserviços em Spring Boot com gateway em Node.js.',
         ],
       },
@@ -194,7 +190,7 @@ export const work: Record<Lang, { jobs: Job[]; education: Job[] }> = {
         period: 'Oct 2022 – Dec 2026 (expected)',
         lead: 'Digital health research with Prof. Alessandro Brawerman.',
         items: [
-          'Lyfia and RecuperAVC, accepted at conferences in 2026 and 2027.',
+          'Lyfia and RecuperAVC, accepted at three conferences in 2026.',
           'Course projects with Docker Compose, such as Spring Boot microservices behind a Node.js gateway.',
         ],
       },
@@ -214,7 +210,7 @@ export type Publication = {
 export const publications: Record<Lang, Publication[]> = {
   pt: [
     {
-      year: '2027',
+      year: '2026',
       venue: "ICITS'27, 10th International Conference on Information Technology & Systems",
       status: 'Full paper aceito',
       title: 'Mapping Potential Access to Public Hemodialysis in Brazil, 2017 to 2024',
@@ -239,7 +235,7 @@ export const publications: Record<Lang, Publication[]> = {
   ],
   en: [
     {
-      year: '2027',
+      year: '2026',
       venue: "ICITS'27, 10th International Conference on Information Technology & Systems",
       status: 'Full paper, accepted',
       title: 'Mapping Potential Access to Public Hemodialysis in Brazil, 2017 to 2024',

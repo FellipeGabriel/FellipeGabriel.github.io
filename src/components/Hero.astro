@@ -9,7 +9,7 @@ const { lang } = Astro.props;
 const t = ui[lang].hero;
 const lines = ['Fellipe', 'Gabriel'];
 ---
-<section class="hero field-orange" data-field="orange" aria-labelledby="hero-title">
+<section class="hero field-petrol" data-field="petrol" aria-labelledby="hero-title">
   <figure class="hero-img" data-hero-img>
     <div class="hero-img-inner" data-hero-img-inner>
       <Picture
@@ -47,14 +47,12 @@ const lines = ['Fellipe', 'Gabriel'];
       <a class="btn" href={LINKEDIN} rel="noopener" target="_blank">LinkedIn<Icon name="arrow-up-right" /></a>
     </div>
   </div>
-
-  <p class="hero-caption label">{t.caption}</p>
 </section>
 
 <style>
   .hero {
     --img-t: 4.75rem;
-    --img-l: 52cqw;
+    --img-l: 50cqw;
     --title-size: 20.5cqw;
     --title-top: calc(var(--img-t) + 9svh);
     position: relative;
@@ -73,6 +71,7 @@ const lines = ['Fellipe', 'Gabriel'];
   .hero-title {
     position: relative;
     z-index: 2;
+    color: var(--amber);
     margin-left: -0.02em;
   }
   .hero-line {
@@ -84,7 +83,7 @@ const lines = ['Fellipe', 'Gabriel'];
     top: var(--img-t);
     left: var(--img-l);
     right: 0;
-    bottom: 4.5rem;
+    bottom: 0;
     overflow: hidden;
     z-index: 3;
     background: var(--ink);
@@ -152,14 +151,6 @@ const lines = ['Fellipe', 'Gabriel'];
   .copy-btn:global(.is-copied) :global(.icon-check) {
     display: block;
   }
-  .hero-caption {
-    position: absolute;
-    right: var(--pad);
-    bottom: 1.6rem;
-    z-index: 3;
-    max-width: 44cqw;
-    text-align: right;
-  }
 
   @media (max-width: 760px) {
     .hero {
@@ -181,14 +172,6 @@ const lines = ['Fellipe', 'Gabriel'];
     }
     .hero-role {
       font-size: var(--step-3);
-    }
-    .hero-caption {
-      top: calc(var(--img-t) + var(--img-h) + 0.5rem);
-      bottom: auto;
-      right: var(--pad);
-      max-width: 60cqw;
-      color: var(--ink);
-      display: none;
     }
     .email-group {
       width: 100%;

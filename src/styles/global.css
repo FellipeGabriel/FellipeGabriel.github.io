@@ -1,11 +1,13 @@
 @import '@fontsource-variable/archivo/wdth.css';
 
 :root {
-  --orange: #ff4f1a;
-  --ink: #111111;
+  --amber: #f2b33d;
+  --ink: #0c1114;
   --paper: #e9eaea;
-  --cobalt: #2b44ff;
+  --petrol: #0f3640;
   --paper-2: #d3d5d6;
+  --lyfia-cream: #e9d9bb;
+  --recupera-green: #94bd3b;
 
   --font: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
   --pad: clamp(16px, 2.6vw, 44px);
@@ -59,7 +61,7 @@ body {
   font-kerning: normal;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  caret-color: var(--orange);
+  caret-color: var(--amber);
   overflow-x: clip;
 }
 
@@ -92,11 +94,11 @@ button {
 
 ::selection {
   background: var(--ink);
-  color: var(--orange);
+  color: var(--amber);
 }
 .field-ink ::selection,
-.field-cobalt ::selection {
-  background: var(--orange);
+.field-petrol ::selection {
+  background: var(--amber);
   color: var(--ink);
 }
 
@@ -134,22 +136,22 @@ a {
   white-space: nowrap;
 }
 
-.field-orange {
-  --bg: var(--orange);
+.field-amber {
+  --bg: var(--amber);
   --fg: var(--ink);
-  background: var(--orange);
+  background: var(--amber);
   color: var(--ink);
   --accent: var(--ink);
   --solid-bg: var(--ink);
-  --solid-fg: var(--paper);
+  --solid-fg: var(--amber);
 }
 .field-ink {
   --bg: var(--ink);
   --fg: var(--paper);
   background: var(--ink);
   color: var(--paper);
-  --accent: var(--orange);
-  --solid-bg: var(--orange);
+  --accent: var(--amber);
+  --solid-bg: var(--amber);
   --solid-fg: var(--ink);
 }
 .field-paper {
@@ -157,18 +159,18 @@ a {
   --fg: var(--ink);
   background: var(--paper);
   color: var(--ink);
-  --accent: var(--cobalt);
-  --solid-bg: var(--ink);
+  --accent: var(--petrol);
+  --solid-bg: var(--petrol);
   --solid-fg: var(--paper);
 }
-.field-cobalt {
-  --bg: var(--cobalt);
+.field-petrol {
+  --bg: var(--petrol);
   --fg: var(--paper);
-  background: var(--cobalt);
+  background: var(--petrol);
   color: var(--paper);
-  --accent: var(--paper);
-  --solid-bg: var(--paper);
-  --solid-fg: var(--cobalt);
+  --accent: var(--amber);
+  --solid-bg: var(--amber);
+  --solid-fg: var(--ink);
 }
 
 .display {
@@ -341,19 +343,19 @@ a {
 }
 
 html[data-top-field='ink'],
-html[data-top-field='cobalt'],
+html[data-top-field='petrol'],
 html[data-nav-field='ink'],
-html[data-nav-field='cobalt'] {
+html[data-nav-field='petrol'] {
   --nav-fg: var(--paper);
 }
-html[data-nav-field='orange'],
+html[data-nav-field='amber'],
 html[data-nav-field='paper'] {
   --nav-fg: var(--ink);
 }
-html[data-nav-field='orange'] { --nav-bg: var(--orange); }
+html[data-nav-field='amber'] { --nav-bg: var(--amber); }
 html[data-nav-field='paper'] { --nav-bg: var(--paper); }
 html[data-nav-field='ink'] { --nav-bg: var(--ink); }
-html[data-nav-field='cobalt'] { --nav-bg: var(--cobalt); }
+html[data-nav-field='petrol'] { --nav-bg: var(--petrol); }
 html.nav-top { --nav-bg: transparent; }
 
 .motion:not(.motion-ready) .hero-line,
