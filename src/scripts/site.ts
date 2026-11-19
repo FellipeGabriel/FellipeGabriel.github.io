@@ -4,6 +4,7 @@ import { SplitText } from 'gsap/SplitText';
 import Lenis from 'lenis';
 import { runLoader } from './loader';
 import { sectionReveals } from './reveals';
+import { initPageTransitions, revealIncoming } from './transitions';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -346,6 +347,7 @@ if (reduceMotion) {
   initLenis();
   initNav();
   initMenu();
+  initPageTransitions(() => lenis?.stop());
   document.fonts.ready.then(async () => {
     fitHeadings();
     watchFit();
@@ -359,6 +361,7 @@ if (reduceMotion) {
     root.classList.add('motion-ready');
     ScrollTrigger.refresh();
     await runLoader();
+    await revealIncoming();
     lenis?.start();
     intro?.play();
     if (location.hash) requestAnimationFrame(() => scrollToHash(location.hash, true));

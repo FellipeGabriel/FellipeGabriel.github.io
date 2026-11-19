@@ -18,7 +18,7 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
   <div class="track" data-track>
     <div class="panel panel-intro field-ink" data-field="ink">
       <div class="intro-img" aria-hidden="true">
-        <Picture src={galaxyPair} formats={['avif', 'webp']} widths={[800, 1400, 2200]} sizes="100vw" alt="" loading="lazy" />
+        <Picture quality={88} src={galaxyPair} formats={['avif', 'webp']} widths={[1000, 1600, 2400, 3200]} sizes="100vw" alt="" loading="lazy" />
       </div>
       <h2 id="projects-title" class="display intro-title" data-fit data-split>{t.heading}</h2>
       <div class="intro-foot">
@@ -52,17 +52,17 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
           {p.slug === 'lyfia' ? (
             <>
               <div class="shot shot-main" data-depth="0.06">
-                <Picture src={p.cover.src} formats={['avif', 'webp']} widths={[800, 1300, 2000]} sizes="(max-width: 760px) 100vw, 58vw" alt={p.cover.alt} loading="lazy" />
+                <Picture quality={88} src={p.cover.src} formats={['avif', 'webp']} widths={[800, 1300, 2000]} sizes="(max-width: 760px) 100vw, 58vw" alt={p.cover.alt} loading="lazy" />
               </div>
               <div class="shot shot-phone" data-depth="-0.12">
-                <Picture src={p.secondary[0].src} formats={['avif', 'webp']} widths={[300, 520]} sizes="(max-width: 760px) 30vw, 13vw" alt={p.secondary[0].alt} loading="lazy" />
+                <Picture quality={88} src={p.secondary[0].src} formats={['avif', 'webp']} widths={[300, 520]} sizes="(max-width: 760px) 30vw, 13vw" alt={p.secondary[0].alt} loading="lazy" />
               </div>
             </>
           ) : (
             <div class="phones" data-depth="0.03">
               {[p.cover, ...p.secondary].map((s) => (
                 <div class="phone">
-                  <Picture src={s.src} formats={['avif', 'webp']} widths={[320, 640]} sizes="(max-width: 760px) 30vw, 16vw" alt={s.alt} loading="lazy" />
+                  <Picture quality={88} src={s.src} formats={['avif', 'webp']} widths={[320, 640]} sizes="(max-width: 760px) 30vw, 16vw" alt={s.alt} loading="lazy" />
                 </div>
               ))}
             </div>
@@ -256,26 +256,22 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
     border: 6px solid var(--ink);
     z-index: 3;
   }
-  .project-recuperavc {
-    --qr-size: 6.5rem;
-    --qr-top: calc(var(--title-top) + var(--title-size) * 0.8 - var(--plate-t) + 1.25rem);
-    --phones-top: calc(var(--qr-top) + var(--qr-size) + 1.25rem);
+  .project-recuperavc .project-plate {
+    container-type: size;
   }
   .phones {
     position: absolute;
-    top: var(--phones-top, 6%);
     left: 3%;
     right: 3%;
     bottom: 5%;
     display: flex;
     justify-content: center;
-    align-items: stretch;
+    align-items: flex-end;
     gap: 3%;
   }
   .phone {
     flex: none;
-    height: 100%;
-    width: auto;
+    width: min(29cqw, (100cqh - 14rem) * 0.47);
     aspect-ratio: 720 / 1530;
     border: 6px solid var(--ink);
     background: var(--ink);
@@ -283,24 +279,24 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
   }
   .project-plate :global(.plate-qr) {
     position: absolute;
-    top: var(--qr-top);
+    top: 1.25rem;
     right: 1.25rem;
     z-index: 3;
-    flex-direction: row-reverse;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.6rem;
     color: var(--ink);
   }
   .project-plate :global(.plate-qr .qr-code) {
-    width: var(--qr-size);
+    width: 6.5rem;
   }
   .project-plate :global(.plate-qr .qr-label) {
-    max-width: 17ch;
+    max-width: 15ch;
     text-align: right;
     font-weight: 750;
-    font-size: var(--step-0);
-    line-height: 1.2;
-    letter-spacing: 0;
-    font-variation-settings: 'wdth' 100;
+    font-size: var(--step--1);
+    line-height: 1.25;
+    letter-spacing: 0.01em;
   }
 
   .project-body {
@@ -403,8 +399,8 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
     .project-ghost {
       display: none;
     }
-    .project-recuperavc {
-      --phones-top: 6%;
+    .phone {
+      width: min(29cqw, (100cqh - 2rem) * 0.47);
     }
     .project-lyfia .shot-main {
       inset: 0;

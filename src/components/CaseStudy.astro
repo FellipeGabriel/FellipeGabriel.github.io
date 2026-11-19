@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 import Icon from './Icon.astro';
 import ProjectLink from './ProjectLink.astro';
 import QrCode from './QrCode.astro';
-import horsehead from '../assets/space/horsehead.jpg';
+import uranus from '../assets/space/uranus.jpg';
 import sombrero from '../assets/space/sombrero.jpg';
 import { ui, routes, publications, type Lang } from '../data/content';
 import { projects, otherSlug, type Slug } from '../data/projects';
@@ -18,7 +18,7 @@ const p = projects[lang].find((x) => x.slug === slug)!;
 const next = projects[lang].find((x) => x.slug === otherSlug(slug))!;
 const pubs = publications[lang].filter((x) => x.project === slug);
 const nextField = next.field;
-const nextImage = slug === 'lyfia' ? horsehead : sombrero;
+const nextImage = slug === 'lyfia' ? uranus : sombrero;
 const title = `${p.name}: ${p.kind}. ${ui[lang].title.split(',')[0]}`;
 ---
 <Base
@@ -54,12 +54,12 @@ const title = `${p.name}: ${p.kind}. ${ui[lang].title.split(',')[0]}`;
 
     <div class={`case-plate plate plate-${p.slug}`} style={`view-transition-name: plate-${p.slug}`} data-case-plate>
       {p.slug === 'lyfia' ? (
-        <Picture src={p.cover.src} formats={['avif', 'webp']} widths={[800, 1400, 2200]} sizes="100vw" alt={p.cover.alt} loading="eager" fetchpriority="high" />
+        <Picture quality={88} src={p.cover.src} formats={['avif', 'webp']} widths={[800, 1400, 2200]} sizes="100vw" alt={p.cover.alt} loading="eager" fetchpriority="high" />
       ) : (
         <div class="case-phones">
           {[p.cover, ...p.secondary].map((s) => (
             <div class="case-phone">
-              <Picture src={s.src} formats={['avif', 'webp']} widths={[320, 640]} sizes="(max-width: 760px) 30vw, 22vw" alt={s.alt} loading="eager" />
+              <Picture quality={88} src={s.src} formats={['avif', 'webp']} widths={[320, 640]} sizes="(max-width: 760px) 30vw, 22vw" alt={s.alt} loading="eager" />
             </div>
           ))}
         </div>
@@ -76,7 +76,7 @@ const title = `${p.name}: ${p.kind}. ${ui[lang].title.split(',')[0]}`;
           {s.shot && (
             <figure class={`case-shot ${s.shot.src.width < s.shot.src.height ? 'is-portrait' : ''}`}>
               <div class="plate">
-                <Picture src={s.shot.src} formats={['avif', 'webp']} widths={[480, 900, 1600]} sizes="(max-width: 899px) 100vw, 60vw" alt={s.shot.alt} loading="lazy" />
+                <Picture quality={88} src={s.shot.src} formats={['avif', 'webp']} widths={[480, 900, 1600]} sizes="(max-width: 899px) 100vw, 60vw" alt={s.shot.alt} loading="lazy" />
               </div>
               {s.shot.caption && <figcaption class="caption">{s.shot.caption}</figcaption>}
             </figure>
@@ -102,7 +102,7 @@ const title = `${p.name}: ${p.kind}. ${ui[lang].title.split(',')[0]}`;
 
     <nav class={`case-next field-${nextField}`} data-field={nextField} aria-label={t.next}>
       <div class="case-next-img" aria-hidden="true">
-        <Picture src={nextImage} formats={['avif', 'webp']} widths={[800, 1400, 2200]} sizes="100vw" alt="" loading="lazy" />
+        <Picture quality={88} src={nextImage} formats={['avif', 'webp']} widths={[1000, 1600, 2400, 3200]} sizes="100vw" alt="" loading="lazy" />
       </div>
       <a href={routes[lang].project(next.slug)} class="case-next-link">
         <span class="display case-next-title" style={`view-transition-name: title-${next.slug}; --title-wdth: ${next.name.length <= 6 ? 125 : 62}`}>{next.name}<Icon name="arrow-right" class="icon next-arrow" /></span>

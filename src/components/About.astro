@@ -12,7 +12,7 @@ const t = ui[lang].about;
   <h2 id="about-title" class="display about-title" data-fit="0.62" data-split>{t.heading}</h2>
   <div class="about-grid">
     <figure class="about-photo plate">
-      <Picture src={photo} formats={['avif', 'webp']} widths={[240, 480]} sizes="(max-width: 899px) 34vw, 12vw" alt={t.photoAlt} loading="lazy" />
+      <Picture quality={88} src={photo} formats={['avif', 'webp']} widths={[240, 480]} sizes="(max-width: 899px) 34vw, 12vw" alt={t.photoAlt} loading="lazy" />
     </figure>
     <div class="about-text prose">
       {t.body.map((p) => <p>{p}</p>)}

@@ -6,7 +6,7 @@ Portfólio de Fellipe Gabriel, desenvolvedor full stack. Português em `/pt/`, i
 
 - [Astro](https://astro.build) gerando HTML estático
 - [GSAP](https://gsap.com) (ScrollTrigger e SplitText) e [Lenis](https://lenis.darkroom.engineering) para rolagem e animação
-- View Transitions entre páginas
+- Transição própria entre páginas (cortina em colunas, `src/scripts/transitions.ts`)
 - Archivo (variável, eixo de largura) via Fontsource
 - Deploy no GitHub Pages pelo GitHub Actions (`.github/workflows/deploy.yml`)
 
@@ -31,7 +31,7 @@ Imagens do espaço do telescópio James Webb: NASA, ESA, CSA e STScI, via [ESA/W
 
 - `src/assets/space/cosmic-cliffs.jpg`: Carina Nebula, NIRCam. Crédito: NASA, ESA, CSA, and STScI, J. DePasquale (STScI). https://esawebb.org/images/carinanebula3/
 - `src/assets/space/galaxy-pair.jpg`: IC 2163 e NGC 2207. Crédito: NASA, ESA, CSA, STScI. https://esawebb.org/images/weic2426a/
-- `src/assets/space/jupiter.jpg`: Júpiter, NIRCam. Crédito: NASA, ESA, Jupiter ERS Team; image processing by Judy Schmidt. https://esawebb.org/images/jupiter-auroras1/
+- `src/assets/space/uranus.jpg`: Urano, NIRCam. Crédito: NASA, ESA, CSA, STScI. https://esawebb.org/images/weic2602a/
 - `src/assets/space/horsehead.jpg`: Nebulosa Cabeça de Cavalo, NIRCam. Crédito: ESA/Webb, NASA, CSA, K. Misselt (University of Arizona) and A. Abergel (IAS/University Paris-Saclay, CNRS). https://esawebb.org/images/weic2411a/
 - `src/assets/space/sombrero.jpg`: Galáxia Sombrero, MIRI. Crédito: NASA, ESA, CSA, STScI. https://esawebb.org/images/weic2427a/
 
