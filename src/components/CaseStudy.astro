@@ -104,6 +104,7 @@ const title = `${p.name}: ${p.kind}. ${ui[lang].title.split(',')[0]}`;
     <nav class={`case-next field-${nextField}`} data-field={nextField} aria-label={t.next}>
       <div class="case-next-img" aria-hidden="true">
         <Picture quality={88} src={nextImage} formats={['avif', 'webp']} widths={[1000, 1600, 2400, 3200]} sizes="100vw" alt="" loading="lazy" />
+        {next.slug === 'lyfia' && <img class="map-lines" src="/collage/contours.svg" alt="" width="1600" height="1000" loading="lazy" decoding="async" />}
       </div>
       <a href={routes[lang].project(next.slug)} class="case-next-link">
         <span class="display case-next-title" style={`view-transition-name: title-${next.slug}; --title-wdth: ${next.name.length <= 6 ? 125 : 62}`}>{next.name}<Icon name="arrow-right" class="icon next-arrow" /></span>
@@ -314,6 +315,13 @@ const title = `${p.name}: ${p.kind}. ${ui[lang].title.split(',')[0]}`;
   .case-next-img :global(img) {
     object-fit: cover;
     object-position: 50% 15%;
+  }
+  /* Linhas de mapa: sÃ³ no cartaz do Lyfia, sobre a imagem do Webb (gerado por scripts/collage.py). */
+  .case-next-img .map-lines {
+    position: absolute;
+    inset: 0;
+    opacity: 0.35;
+    pointer-events: none;
   }
   .case-next-link,
   .case-back {
