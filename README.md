@@ -35,4 +35,6 @@ Imagens do espaço do telescópio James Webb: NASA, ESA, CSA e STScI, via [ESA/W
 - `src/assets/space/horsehead.jpg`: Nebulosa Cabeça de Cavalo, NIRCam. Crédito: ESA/Webb, NASA, CSA, K. Misselt (University of Arizona) and A. Abergel (IAS/University Paris-Saclay, CNRS). https://esawebb.org/images/weic2411a/
 - `src/assets/space/sombrero.jpg`: Galáxia Sombrero, MIRI. Crédito: NASA, ESA, CSA, STScI. https://esawebb.org/images/weic2427a/
 
+As fotos do site passam pela gradação de filme "Halação" uma vez, antes do build. Os originais ficam em `src/assets/space/raw/`; para regerar as versões gradadas, rode `python3 -m pip install numpy pillow scipy` e depois `python3 scripts/film-grade.py --all` (ajustes por imagem ficam em `PER_IMAGE`, no próprio script).
+
 Capturas de tela e ícones dos projetos (Lyfia e RecuperAVC): do próprio autor. Logo do Google Play: Google LLC.
