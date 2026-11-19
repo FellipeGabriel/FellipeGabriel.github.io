@@ -12,7 +12,7 @@ const h = ui[lang].hero;
 const [user, domain] = EMAIL.split('@');
 ---
 <section id={sectionIds[lang].contact} class="contact field-amber" data-field="amber" aria-labelledby="contact-title">
-  <figure class="contact-img" data-contact-img>
+  <figure class="contact-img projector" data-contact-img>
     <Picture quality={88} src={horsehead} formats={['avif', 'webp']} widths={[600, 1000, 1500, 2000]} sizes="(max-width: 899px) 100vw, 34vw" alt="" loading="lazy" />
   </figure>
   <div class="contact-main">
@@ -94,6 +94,7 @@ const [user, domain] = EMAIL.split('@');
     margin-bottom: calc(clamp(4rem, 10svh, 7rem) * -1);
     overflow: hidden;
     position: relative;
+    background: var(--ink);
   }
   .contact-img :global(picture) {
     flex: 1;
