@@ -26,7 +26,7 @@ Desenvolvedor full stack com quase 3 anos em produção que também faz pesquisa
 
 - Visitante chega por link direto; não há busca nem login.
 - Idioma: português ou inglês conforme o navegador, com seletor manual que persiste.
-- Estrutura: home em rolagem longa (com trecho de rolagem lateral nos projetos) + uma página por projeto contando problema, decisões técnicas e links.
+- Estrutura: home em rolagem longa, com um cartaz vertical por projeto (telas inteiras, sem prender a rolagem) + uma página por projeto contando problema, decisões técnicas e links.
 - Contato: e-mail goncalvesaraujofellipe@gmail.com, LinkedIn linkedin.com/in/gabrielfellipe, GitHub github.com/FellipeGabriel. Sem telefone, sem PDF do currículo.
 
 ## Capabilities and Constraints
@@ -43,9 +43,9 @@ Desenvolvedor full stack com quase 3 anos em produção que também faz pesquisa
 ## Brand Commitments
 
 Pedidos explícitos do usuário (vinculantes):
-- Design criativo, no nível Awwwards: rolagem suave, rolagem lateral, transições criativas entre seções e páginas. Referências: artigo "4 Creative Navigation UI Patterns" (Awwwards) e coleção casperbdv/inspiration.
+- Design criativo, no nível Awwwards: rolagem suave, transições criativas entre seções e páginas. A rolagem lateral fixada dos projetos foi retirada em 19/11/2026 a pedido do usuário, que achou a apresentação cansativa e difícil de ler. Referências: artigo "4 Creative Navigation UI Patterns" (Awwwards) e coleção casperbdv/inspiration.
 - Estilo de imagens sólidas combinadas com textos grandes por cima.
-- Imagens do espaço (nebulosas e afins) de boa qualidade, como complemento, nunca como foco.
+- Fotos cinematográficas de boa qualidade, como complemento, nunca como foco, ligadas aos projetos e ao ofício. As imagens do espaço foram retiradas em 19/11/2026 a pedido do usuário, porque podiam sugerir que os projetos envolvem astronomia. Nada de legenda, nome ou palavra solta sobre as fotos.
 - Esquema de cores sólido, com uma cor de contraste que complemente as demais.
 - Texto direto e informativo. Proibido: frases de efeito, slogans, piadas ou trocadilhos com espaço, clichês ("apaixonado", "proativo", "robusto", "resultados"), barras de habilidade. Todo texto passa pela skill humanizer.
 - Foto do usuário: a mesma da landing do RecuperAVC (`src/assets/source/fellipe.*.jpg`, 1080×1076).
@@ -58,7 +58,7 @@ Pedidos explícitos do usuário (vinculantes):
 - RecuperAVC (TCC): https://play.google.com/store/apps/details?id=com.recuperavc · https://github.com/PauloBayer/recuperavc · landing https://paulobayer.github.io/recuperavc/. Kotlin, Jetpack Compose, MVVM, Room; Whisper.cpp via JNI com build -O3 no NDK e detecção de silêncio; WPM e taxa de erro; testes de fala, arranjo de frases e coordenação motora; claro/escuro/alto contraste, ajuste de fonte, relatórios PDF; publicado e mantido por ele na Google Play (API 36). Feito com Paulo Eduardo Bayer Kresko; dizer só "TCC". Artigo original no XXI CBIS 2026 (Fellipe Gabriel, Paulo Eduardo Bayer Kresko, Alessandro Brawerman).
   - Imagens do app em `src/assets/source/` (celular-home, Avoice, Atapping, Awrite).
 - Não há depoimentos, clientes ou números públicos da TRC. Não inventar.
-- Imagens do espaço ainda não escolhidas; usar ESA/Webb (CC BY 4.0, crédito "ESA/Webb") ou NASA (domínio público), conferindo a licença de cada uma.
+- Fotos: Wikimedia Commons (CC BY-SA 4.0) e Unsplash (Licença Unsplash), créditos no README; sempre conferir a licença e preferir as que permitem modificação, porque todas passam pela gradação de filme.
 
 ## Product Principles
 

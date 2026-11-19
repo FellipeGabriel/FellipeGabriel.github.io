@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-19T20:19:39Z",
+  "generatedAt": "2026-11-19T21:27:11Z",
   "title": "Design System: Fellipe Gabriel, portfólio",
   "extensions": {
     "colorMeta": {
@@ -99,12 +99,7 @@
       "label": {
         "displayName": "Label",
         "family": "JetBrains Mono Variable (--font-mono)",
-        "purpose": "Períodos, categorias, status, metadados e legendas; identificadores entre barras (\\ nome \\)."
-      },
-      "filmWord": {
-        "displayName": "Film word",
-        "family": "Newsreader Variable itálico (--font-serif)",
-        "purpose": "Uma palavra solta sobre uma foto, cor papel; no máximo uma por imagem."
+        "purpose": "Períodos, categorias, número do projeto, status, metadados e legendas de captura."
       },
       "nav": {
         "displayName": "Nav",
@@ -125,13 +120,13 @@
         "purpose": "Entrada do hero e letras dos títulos de seção."
       },
       {
-        "name": "wall-scrub",
-        "value": "ScrollTrigger scrub 0.6, pin da seção de projetos",
-        "purpose": "Parede horizontal de cartazes."
+        "name": "project-entrance",
+        "value": "SplitText chars do nome (yPercent 105), placa clip-path inset(0 0 100% 0) -> 0 expo.inOut 1.3s, telas y 70 stagger 0.09, fatos x 40",
+        "purpose": "Entrada de cada cartaz de projeto, sem prender a rolagem."
       },
       {
         "name": "loader",
-        "value": "contador 000-100 com background-clip:text da nebulosa; no fim (84 a 100) as colunas passam a papel e o nome a tinta (transição de cor 0.45s); saída em 12 colunas scaleY, expo.inOut 1.1s, stagger 0.045",
+        "value": "contador 000-100 com background-clip:text da foto do hero; no fim (84 a 100) as colunas passam a papel e o nome a tinta (transição de cor 0.45s); saída em 12 colunas scaleY, expo.inOut 1.1s, stagger 0.045",
         "purpose": "Primeira visita da sessão (sessionStorage fg-loaded)."
       },
       {
@@ -166,7 +161,7 @@
         "value": "760px"
       },
       {
-        "name": "wall",
+        "name": "desktop",
         "value": "900px"
       }
     ]
@@ -198,9 +193,9 @@
     {
       "name": "Cartaz de projeto",
       "kind": "custom",
-      "description": "Campo do projeto, nome em display cruzando a borda da placa, com a cópia do nome dentro da placa na cor do campo.",
-      "html": "<article class=\"ds-poster\"><h3 class=\"ds-title\">RecuperAVC</h3><div class=\"ds-plate\"><span class=\"ds-ghost\">RecuperAVC</span></div></article>",
-      "css": ".ds-poster{position:relative;height:280px;background:#16130f;overflow:hidden;font-family:'Archivo Variable',Archivo,sans-serif}.ds-title,.ds-ghost{font-size:72px;font-weight:900;line-height:.8;text-transform:uppercase;font-variation-settings:'wdth' 62;white-space:nowrap;margin:0}.ds-title{position:absolute;left:24px;top:40px;color:#d9a548}.ds-plate{position:absolute;left:200px;top:64px;right:24px;bottom:24px;background:#d9a548;overflow:hidden}.ds-ghost{position:absolute;left:-176px;top:-24px;color:#16130f}"
+      "description": "Lido de cima para baixo: nome em display com número e tipo em mono à direita, frase em serifada, placa na cor do produto com as capturas inteiras, fatos e links.",
+      "html": "<article class=\"ds-poster\"><div class=\"ds-head\"><h3 class=\"ds-title\">RecuperAVC</h3><p class=\"ds-meta\">02 / 02<br>App Android, TCC</p></div><div class=\"ds-plate\"></div></article>",
+      "css": ".ds-poster{background:#16130f;color:#f1ece2;padding:24px;font-family:'Archivo Variable',Archivo,sans-serif}.ds-head{display:flex;justify-content:space-between;align-items:flex-end}.ds-title{margin:0;font-size:64px;font-weight:900;line-height:.8;text-transform:uppercase;font-variation-settings:'wdth' 62;color:#d9a548}.ds-meta{margin:0;text-align:right;font:480 .8rem 'JetBrains Mono Variable',ui-monospace,monospace}.ds-plate{margin-top:20px;height:140px;background:#94bd3b}"
     },
     {
       "name": "Links de loja e código",
@@ -210,38 +205,24 @@
       "css": ".ds-links{display:flex;gap:1.5rem;background:#16130f;color:#f1ece2;padding:20px;font:700 1rem 'Archivo Variable',Archivo,sans-serif}.ds-links a{color:inherit;text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:.15em}"
     },
     {
-      "name": "Legenda mono sobre imagem",
-      "kind": "custom",
-      "description": "Identificador da foto do Webb entre barras, em JetBrains Mono, num bloco de tinta sólida.",
-      "html": "<div class=\"ds-photo\"><p class=\"ds-cap\">\\ cosmic-cliffs · nircam \\</p></div>",
-      "css": ".ds-photo{position:relative;height:160px;background:#1e3a3c}.ds-cap{position:absolute;top:12px;right:12px;margin:0;padding:.3rem .55rem;background:#16130f;color:#f1ece2;font:450 .875rem 'JetBrains Mono Variable','JetBrains Mono',ui-monospace,monospace;white-space:nowrap}"
-    },
-    {
-      "name": "Palavra serifada",
-      "kind": "custom",
-      "description": "Uma palavra solta em Newsreader itálico, cor papel, sobre uma área escura da foto.",
-      "html": "<div class=\"ds-photo\"><p class=\"ds-word\">Explorar</p></div>",
-      "css": ".ds-photo{position:relative;height:160px;background:#16130f}.ds-word{position:absolute;right:20px;bottom:16px;margin:0;font:italic 400 3rem/1 'Newsreader Variable',Newsreader,Georgia,serif;letter-spacing:-.01em;color:#f1ece2}"
-    },
-    {
       "name": "Borda rasgada",
       "kind": "custom",
-      "description": "Faixa entre seções: a foto do Webb aparece por trás de duas bordas irregulares (mask-image com SVG de scripts/collage.py) e da fibra do papel.",
+      "description": "Faixa entre seções: a foto aparece por trás de duas bordas irregulares (mask-image com SVG de scripts/collage.py) e da fibra do papel.",
       "html": "<div class=\"ds-tear\"><span class=\"ds-from\"></span><span class=\"ds-to\"></span></div>",
       "css": ".ds-tear{position:relative;height:120px;background:#3a4a6a}.ds-from,.ds-to{position:absolute;inset:0;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}.ds-from{background:#16130f;-webkit-mask-image:url(/collage/tear-1-top.svg);mask-image:url(/collage/tear-1-top.svg)}.ds-to{background:#f1ece2;-webkit-mask-image:url(/collage/tear-1-bottom.svg);mask-image:url(/collage/tear-1-bottom.svg)}"
     }
   ],
   "narrative": {
     "northStar": "A parede de cartazes, filmada",
-    "overview": "Cada seção é um cartaz impresso: um campo de cor chapada ocupa a tela inteira, o título é uma grotesca condensada no tamanho máximo que a largura do cartaz aguenta, e a fotografia entra recortada em retângulo reto, sem moldura. O gesto que define o sistema é o texto atravessando a imagem: quando o título cruza a borda de uma foto ou de uma placa, a cor das letras troca exatamente nessa borda. Por cima dessa estrutura vai um acabamento de película: paleta quente e contida, pretos lavados, halação nas luzes, grão de filme em movimento e tipografia editorial, com uma serifada (Newsreader) na frase de abertura e uma monoespaçada (JetBrains Mono) em rótulos e legendas. As imagens do espaço são material de cartaz, não tema. Fotos sempre com a gradação Halação (scripts/film-grade.py); grão animado global; nunca gradiente decorativo.",
+    "overview": "Cada seção é um cartaz impresso: um campo de cor chapada ocupa a tela inteira, o título é uma grotesca condensada no tamanho máximo que a largura do cartaz aguenta, e a fotografia entra recortada em retângulo reto, sem moldura. O gesto que define o sistema é o texto atravessando a imagem: quando o título cruza a borda de uma foto ou de uma placa, a cor das letras troca exatamente nessa borda. Por cima dessa estrutura vai um acabamento de película: paleta quente e contida, pretos lavados, halação nas luzes, grão de filme em movimento e tipografia editorial, com uma serifada (Newsreader) na frase de abertura e uma monoespaçada (JetBrains Mono) em rótulos. As fotos (cenas de trabalho e de rua em luz baixa) são material de cartaz, não tema, e não levam texto próprio. Fotos sempre com a gradação Halação (scripts/film-grade.py); grão animado global; nunca gradiente decorativo.",
     "keyCharacteristics": [
       "Um campo de cor por seção, de borda a borda.",
       "Títulos em Archivo condensada, ajustados por script à largura do cartaz.",
       "Troca de cor do texto na borda da imagem.",
       "Zero raio, zero sombra, fios de 2px.",
-      "Rolagem suave com uma parede horizontal fixada para os projetos.",
       "Fotos com gradação de filme, grão animado global, paleta quente.",
-      "Três vozes: Archivo (títulos, navegação, corpo), Newsreader (lead e palavra solta), JetBrains Mono (rótulos e legendas)."
+      "Três vozes: Archivo (títulos, navegação, corpo), Newsreader (lead), JetBrains Mono (rótulos).",
+      "Projetos em cartazes verticais com as telas inteiras, sem prender a rolagem."
     ],
     "rules": [
       {
@@ -266,7 +247,7 @@
       },
       {
         "name": "The Same Cap Height Rule",
-        "body": "Nomes de projeto que dividem a parede têm a mesma altura de letra. O nome curto é alargado no eixo de largura (125), não aumentado.",
+        "body": "Nomes de projeto têm a mesma altura de letra. O nome curto é alargado no eixo de largura (125), não aumentado.",
         "section": "typography"
       },
       {
@@ -280,40 +261,37 @@
         "body": "Fotos sempre com a gradação Halação (scripts/film-grade.py); grão animado global; nunca gradiente decorativo. A gradação é feita uma vez, na pré-produção, a partir de src/assets/space/raw/; nunca filter em CSS."
       },
       {
-        "name": "The One Word Rule",
-        "section": "typography",
-        "body": "No máximo uma palavra serifada por imagem: solta, em itálico, cor papel, sobre uma área escura da foto (acima de 3:1)."
-      },
-      {
-        "name": "The Slash Caption Rule",
-        "section": "typography",
-        "body": "Legendas e identificadores em mono vão entre barras (\\ objeto · instrumento \\); sobre foto, num bloco de tinta sólida."
-      },
-      {
         "name": "The Collage Rule",
         "section": "shapes",
         "body": "Os únicos recursos de colagem são a borda rasgada entre seções e as linhas de mapa no cartaz do Lyfia, ambos em SVG próprio gerado por scripts/collage.py."
+      },
+      {
+        "name": "The Bare Photo Rule",
+        "section": "typography",
+        "body": "Nada de legenda, palavra solta ou identificador sobre as fotos. O crédito fica no rodapé e no README."
       }
     ],
     "dos": [
       "Do dar a cada seção um único campo de cor de borda a borda.",
       "Do ajustar o título de seção à largura do cartaz com data-fit e manter um tamanho em vw de reserva.",
       "Do usar a troca de cor na borda da imagem quando o texto cruzar uma placa.",
-      "Do manter fotos e capturas em retângulos retos, sem moldura, o crédito das imagens do Webb fica no rodapé, em uma linha.",
-      "Do desligar Lenis, a parede horizontal, o carregamento, as entradas animadas, o grão, a oscilação e o parallax com prefers-reduced-motion.",
+      "Do manter fotos e capturas em retângulos retos, sem moldura, o crédito das fotos fica no rodapé, em uma linha, e por extenso no README.",
+      "Do desligar Lenis, o carregamento, as entradas animadas, o grão, a oscilação e o parallax com prefers-reduced-motion.",
       "Do dar a cada seção uma entrada própria dentro da mesma gramática (máscara, varredura, escala), nunca a mesma animação repetida.",
       "Do passar toda foto pela gradação Halação (scripts/film-grade.py) e manter o grão animado global.",
-      "Do usar no máximo uma palavra serifada por imagem e escrever legendas em mono, entre barras."
+      "Do escolher fotos que conversem com os projetos e com o ofício (trabalho, cidade, estrada, escrita), em luz baixa."
     ],
     "donts": [
       "Don't usar raio, sombra, gradiente decorativo ou vidro.",
       "Don't colocar rótulo ou sobretítulo pequeno acima de um título; status e categoria vêm depois do título.",
       "Don't usar âmbar como texto sobre papel, nem tinta sobre petróleo.",
-      "Don't usar frases temáticas ou trocadilhos de espaço; as imagens do Webb são material, não assunto.",
-      "Don't dar mais peso visual a um projeto do que ao outro na parede da home.",
       "Don't aplicar filter de cor em CSS nas fotos.",
       "Don't usar outros recursos de colagem além da borda rasgada e das linhas de mapa.",
-      "Don't usar a serifada ou a mono fora dos lugares definidos."
+      "Don't usar a serifada ou a mono fora dos lugares definidos.",
+      "Don't usar imagens que sugiram um assunto alheio ao trabalho (espaço, ciência fora dos projetos).",
+      "Don't pôr legenda, palavra solta ou nome sobre as fotos.",
+      "Don't cortar ou cobrir as capturas dos projetos.",
+      "Don't dar mais peso visual a um projeto do que ao outro."
     ]
   }
 }
