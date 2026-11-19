@@ -20,6 +20,8 @@ export type Project = {
   slug: Slug;
   name: string;
   field: 'petrol' | 'ink';
+  /** Identificador em monoespaçada, no formato `\ nome \`. */
+  code: string;
   kind: string;
   lead: string;
   facts: string[];
@@ -53,6 +55,7 @@ export const projects: Record<Lang, Project[]> = {
       slug: 'lyfia',
       name: 'Lyfia',
       field: 'petrol',
+      code: '\\ lyfia-hemodialise-sus \\',
       kind: 'Pesquisa e painel público, 2026',
       lead: 'Mede quantas máquinas de hemodiálise do SUS estão ao alcance de cada região de saúde do Brasil, de 2017 a 2024.',
       facts: [
@@ -111,6 +114,7 @@ export const projects: Record<Lang, Project[]> = {
       slug: 'recuperavc',
       name: 'RecuperAVC',
       field: 'ink',
+      code: '\\ recuperavc-android \\',
       kind: 'App Android, TCC, 2025–2026',
       lead: 'Testes de fala, linguagem e coordenação motora para acompanhar a reabilitação depois de um AVC. A fala é transcrita no próprio celular, sem internet.',
       facts: [
@@ -177,6 +181,7 @@ export const projects: Record<Lang, Project[]> = {
       slug: 'lyfia',
       name: 'Lyfia',
       field: 'petrol',
+      code: '\\ lyfia-hemodialysis-sus \\',
       kind: 'Research and public dashboard, 2026',
       lead: "Measures how many of Brazil's public hemodialysis machines are within reach of each health region, from 2017 to 2024.",
       facts: [
@@ -235,6 +240,7 @@ export const projects: Record<Lang, Project[]> = {
       slug: 'recuperavc',
       name: 'RecuperAVC',
       field: 'ink',
+      code: '\\ recuperavc-android \\',
       kind: 'Android app, capstone project, 2025–2026',
       lead: 'Speech, language, and motor coordination tests to track rehabilitation after a stroke. Speech is transcribed on the phone itself, with no internet connection.',
       facts: [

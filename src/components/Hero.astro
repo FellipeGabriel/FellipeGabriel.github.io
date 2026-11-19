@@ -2,7 +2,7 @@
 import { Picture } from 'astro:assets';
 import Icon from './Icon.astro';
 import cliffs from '../assets/space/cosmic-cliffs.jpg';
-import { ui, EMAIL, LINKEDIN, type Lang } from '../data/content';
+import { ui, EMAIL, LINKEDIN, spaceCaptions, type Lang } from '../data/content';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -26,6 +26,8 @@ const lines = ['Fellipe', 'Gabriel'];
     <p class="hero-ghost display" aria-hidden="true">
       {lines.map((l, i) => <span class="hero-line" data-hero-line={i}>{l}</span>)}
     </p>
+    <p class="film-caption hero-caption" aria-hidden="true">{spaceCaptions.cliffs}</p>
+    <p class="film-word hero-word" aria-hidden="true">{t.word}</p>
   </figure>
 
   <h1 id="hero-title" class="hero-title display">
@@ -111,6 +113,19 @@ const lines = ['Fellipe', 'Gabriel'];
     margin: 0;
     white-space: nowrap;
   }
+  .hero-caption,
+  .hero-word {
+    position: absolute;
+    right: var(--pad);
+    z-index: 1;
+  }
+  .hero-caption {
+    top: 1rem;
+  }
+  .hero-word {
+    /* Ancorada Ã  altura da tela, nÃ£o ao pÃ© da imagem: o hero pode ser mais alto que a viewport. */
+    top: calc(100svh - var(--img-t) - var(--pad) - 1.35em);
+  }
   .hero-foot {
     position: relative;
     z-index: 2;
@@ -166,6 +181,10 @@ const lines = ['Fellipe', 'Gabriel'];
     .hero-img {
       bottom: auto;
       height: var(--img-h);
+    }
+    .hero-word {
+      top: auto;
+      bottom: calc(var(--title-size) * 0.86 + 0.75rem);
     }
     .hero-foot {
       max-width: none;

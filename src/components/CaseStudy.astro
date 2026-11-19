@@ -6,7 +6,7 @@ import ProjectLink from './ProjectLink.astro';
 import QrCode from './QrCode.astro';
 import uranus from '../assets/space/uranus.jpg';
 import sombrero from '../assets/space/sombrero.jpg';
-import { ui, routes, publications, type Lang } from '../data/content';
+import { ui, routes, publications, spaceCaptions, type Lang } from '../data/content';
 import { projects, otherSlug, type Slug } from '../data/projects';
 import { sectionIds } from '../data/sections';
 
@@ -19,6 +19,7 @@ const next = projects[lang].find((x) => x.slug === otherSlug(slug))!;
 const pubs = publications[lang].filter((x) => x.project === slug);
 const nextField = next.field;
 const nextImage = slug === 'lyfia' ? uranus : sombrero;
+const nextCaption = slug === 'lyfia' ? spaceCaptions.uranus : spaceCaptions.sombrero;
 const title = `${p.name}: ${p.kind}. ${ui[lang].title.split(',')[0]}`;
 ---
 <Base
@@ -35,7 +36,7 @@ const title = `${p.name}: ${p.kind}. ${ui[lang].title.split(',')[0]}`;
     <header class={`case-head field-${p.field}`} data-field={p.field}>
       <h1 class="display case-title" style={`view-transition-name: title-${p.slug}; --title-wdth: ${p.name.length <= 6 ? 125 : 62}`}>{p.name}</h1>
       <div class="case-intro">
-        <p class="label case-kind">{p.kind}</p>
+        <p class="label case-kind"><span class="case-code">{p.code}</span>{p.kind}</p>
         <p class="lead case-lead">{p.lead}</p>
         <div class="case-links">
           {p.links.map((l, i) => <ProjectLink href={l.href} label={l.label} kind={l.kind} variant={i === 0 ? 'solid' : 'button'} />)}
@@ -109,6 +110,7 @@ const title = `${p.name}: ${p.kind}. ${ui[lang].title.split(',')[0]}`;
         <span class="label">{t.next}</span>
       </a>
       <a class="arrow-link case-back" href={`${routes[lang].home}#${sectionIds[lang].projects}`}><Icon name="arrow-left" />{t.back}</a>
+      <p class="film-caption case-next-caption" aria-hidden="true">{nextCaption}</p>
     </nav>
   </article>
 </Base>
@@ -145,6 +147,16 @@ const title = `${p.name}: ${p.kind}. ${ui[lang].title.split(',')[0]}`;
   }
   .field-petrol .case-kind {
     color: var(--paper);
+  }
+  .case-code {
+    display: block;
+    color: var(--fg);
+  }
+  .case-next-caption {
+    position: absolute;
+    right: var(--pad);
+    bottom: var(--pad);
+    z-index: 1;
   }
   .case-lead {
     max-width: 38ch;
@@ -367,6 +379,10 @@ const title = `${p.name}: ${p.kind}. ${ui[lang].title.split(',')[0]}`;
     }
     .case-meta {
       margin-top: 1.5rem;
+    }
+    .case-next-caption {
+      top: 1rem;
+      bottom: auto;
     }
     .case-meta > div {
       grid-template-columns: 1fr;

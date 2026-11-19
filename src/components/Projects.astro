@@ -4,7 +4,7 @@ import Icon from './Icon.astro';
 import ProjectLink from './ProjectLink.astro';
 import QrCode from './QrCode.astro';
 import galaxyPair from '../assets/space/galaxy-pair.jpg';
-import { ui, routes, type Lang } from '../data/content';
+import { ui, routes, spaceCaptions, type Lang } from '../data/content';
 import { projects } from '../data/projects';
 import { sectionIds } from '../data/sections';
 
@@ -21,6 +21,8 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
         <Picture quality={88} src={galaxyPair} formats={['avif', 'webp']} widths={[1000, 1600, 2400, 3200]} sizes="100vw" alt="" loading="lazy" />
       </div>
       <h2 id="projects-title" class="display intro-title" data-fit data-split>{t.heading}</h2>
+      <p class="film-caption intro-caption" aria-hidden="true">{spaceCaptions.galaxyPair}</p>
+      <p class="film-word intro-word" aria-hidden="true">{t.word}</p>
       <div class="intro-foot">
         <p class="lead">{t.lead}</p>
         <ol class="intro-index">
@@ -72,7 +74,7 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
         </div>
 
         <div class="project-body">
-          <p class="label project-kind">{p.kind}</p>
+          <p class="label project-kind"><span class="project-code">{p.code}</span>{p.kind}</p>
           <p class="lead">{p.lead}</p>
           <ul class="facts">
             {p.facts.map((f) => <li>{f}</li>)}
@@ -128,6 +130,23 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
     z-index: 1;
     color: var(--paper);
     font-size: clamp(3.5rem, 15vw, 22rem);
+  }
+  .intro-caption,
+  .intro-word {
+    position: relative;
+    z-index: 1;
+  }
+  .intro-caption {
+    align-self: flex-end;
+    margin-top: -1.25rem;
+  }
+  .intro-word {
+    align-self: flex-start;
+    margin-top: auto;
+    margin-bottom: -0.5rem;
+  }
+  .intro-word + .intro-foot {
+    margin-top: 0;
   }
   .intro-foot {
     position: relative;
@@ -289,7 +308,7 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
   .project-plate :global(.plate-qr .qr-label) {
     max-width: 15ch;
     text-align: right;
-    font-weight: 750;
+    font-weight: 500;
     font-size: var(--step--1);
     line-height: 1.25;
     letter-spacing: 0.01em;
@@ -305,6 +324,10 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
   }
   .project-kind {
     color: var(--accent);
+  }
+  .project-code {
+    display: block;
+    color: var(--fg);
   }
   .facts {
     border-top: var(--rule) solid currentColor;
@@ -371,6 +394,9 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
   @media (max-width: 899px) {
     .panel-intro {
       min-height: 0;
+    }
+    .intro-word {
+      display: none;
     }
     .intro-foot .lead,
     .intro-index {
