@@ -113,9 +113,7 @@ function initNav() {
 }
 
 function initNavTriggers() {
-  const wallPinned = !reduceMotion && window.innerWidth >= 900;
   $$('[data-field]')
-    .filter((el) => !wallPinned || !el.closest('[data-track]'))
     .forEach((el) => {
       ScrollTrigger.create({
         trigger: el,
@@ -219,83 +217,32 @@ function splitHeadings() {
   });
 }
 
-function projectsWall() {
-  const section = $('[data-projects]');
-  const track = section ? $('[data-track]', section) : null;
-  if (!section || !track) return;
-
-  const mm = gsap.matchMedia();
-  mm.add('(min-width: 900px)', () => {
-    const distance = () => track.scrollWidth - window.innerWidth;
-    const travel = () => distance() * 1.4;
-    const hold = () => window.innerHeight * 1.3;
-    ScrollTrigger.create({
-      trigger: section,
-      start: 'top top',
-      end: () => `+=${travel() + hold()}`,
-      pin: true,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-    });
-    const wall = gsap.to(track, {
-      x: () => -distance(),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: () => `+=${travel()}`,
-        scrub: 0.6,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => gsap.set('[data-track-progress]', { scaleX: self.progress }),
-      },
-    });
-
-    $$('[data-field]', track).forEach((panel) => {
-      ScrollTrigger.create({
-        trigger: panel,
-        containerAnimation: wall,
-        start: 'left 50%',
-        end: 'right 50%',
-        onToggle: (self) => self.isActive && setNavField(panel.dataset.field),
-      });
-    });
-
-    $$('[data-panel]', track).forEach((panel) => {
-      const title = $('.project-title', panel);
-      const ghost = $('.project-ghost', panel);
-      gsap.fromTo(
-        [title, ghost].filter(Boolean),
-        { x: () => window.innerWidth * 0.16 },
-        {
-          x: () => -window.innerWidth * 0.05,
-          ease: 'none',
-          scrollTrigger: { trigger: panel, containerAnimation: wall, start: 'left right', end: 'right left', scrub: true, invalidateOnRefresh: true },
-        },
-      );
-      $$('[data-depth]', panel).forEach((shot) => {
-        const depth = parseFloat(shot.dataset.depth ?? '0');
-        gsap.fromTo(
-          shot,
-          { xPercent: depth * 100 },
-          {
-            xPercent: depth * -100,
-            ease: 'none',
-            scrollTrigger: { trigger: panel, containerAnimation: wall, start: 'left right', end: 'right left', scrub: true },
-          },
-        );
-      });
-    });
-
-    return () => gsap.set('[data-track-progress]', { scaleX: 0 });
-  });
-
-  mm.add('(max-width: 899px)', () => {
-    $$('[data-depth]', track).forEach((shot) => {
+function projectsMotion() {
+  $$('[data-panel]').forEach((panel) => {
+    const title = $('[data-project-title]', panel);
+    if (title) {
+      const split = SplitText.create(title, { type: 'chars', mask: 'chars' });
+      gsap.from(split.chars, { yPercent: 105, duration: 1.1, ease: 'expo.out', stagger: 0.035, scrollTrigger: { trigger: title, start: 'top 88%', once: true } });
+    }
+    const lead = $('[data-project-lead]', panel);
+    if (lead) {
+      const split = SplitText.create(lead, { type: 'lines', mask: 'lines', linesClass: 'split-line' });
+      gsap.from(split.lines, { yPercent: 105, duration: 1, ease: 'expo.out', stagger: 0.08, scrollTrigger: { trigger: lead, start: 'top 88%', once: true } });
+    }
+    const plate = $('[data-plate]', panel);
+    if (plate) {
+      const tl = gsap.timeline({ scrollTrigger: { trigger: plate, start: 'top 82%', once: true } });
+      tl.from(plate, { clipPath: 'inset(0% 0% 100% 0%)', duration: 1.3, ease: 'expo.inOut' });
+      tl.from($$('[data-shot]', plate), { y: 70, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: 0.09 }, 0.45);
+    }
+    const facts = $$('[data-facts] li', panel);
+    if (facts.length) gsap.from(facts, { x: 40, opacity: 0, duration: 0.9, ease: 'expo.out', stagger: 0.07, scrollTrigger: { trigger: facts[0], start: 'top 92%', once: true } });
+    $$('[data-depth]', panel).forEach((shot) => {
       const depth = parseFloat(shot.dataset.depth ?? '0');
-      gsap.fromTo(shot, { yPercent: depth * 60 }, {
-        yPercent: depth * -60,
+      gsap.fromTo(shot, { yPercent: depth * -100 }, {
+        yPercent: depth * 100,
         ease: 'none',
-        scrollTrigger: { trigger: shot.closest('[data-panel]'), start: 'top bottom', end: 'bottom top', scrub: true },
+        scrollTrigger: { trigger: plate ?? panel, start: 'top bottom', end: 'bottom top', scrub: true },
       });
     });
   });
@@ -365,7 +312,7 @@ if (reduceMotion) {
     watchFit();
     const intro = heroMotion();
     splitHeadings();
-    projectsWall();
+    projectsMotion();
     contactMotion();
     tearMotion();
     caseMotion();
