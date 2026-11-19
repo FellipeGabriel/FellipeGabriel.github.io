@@ -70,13 +70,17 @@ const style = [
     -webkit-mask-position: 0 0;
     mask-position: 0 0;
   }
+  /* Cada camada passa 2px da borda reta da faixa (cortados pelo overflow), para a
+     última linha da máscara esticada não deixar um fio do fundo aparecer (WebKit). */
   .tear-from,
   .tear-from-rim {
+    inset: -2px 0 0 0;
     -webkit-mask-image: var(--edge-top);
     mask-image: var(--edge-top);
   }
   .tear-to,
   .tear-to-rim {
+    inset: 0 0 -2px 0;
     -webkit-mask-image: var(--edge-bottom);
     mask-image: var(--edge-bottom);
   }
