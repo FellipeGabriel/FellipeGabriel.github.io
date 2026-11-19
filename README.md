@@ -7,7 +7,8 @@ Portfólio de Fellipe Gabriel, desenvolvedor full stack. Português em `/pt/`, i
 - [Astro](https://astro.build) gerando HTML estático
 - [GSAP](https://gsap.com) (ScrollTrigger e SplitText) e [Lenis](https://lenis.darkroom.engineering) para rolagem e animação
 - Transição própria entre páginas (cortina em colunas, `src/scripts/transitions.ts`)
-- Archivo (variável, eixo de largura) via Fontsource
+- Archivo (variável, eixo de largura), Newsreader e JetBrains Mono via Fontsource
+- Gradação de filme das fotos (`scripts/film-grade.py`) e SVGs de colagem (`scripts/collage.py`), gerados antes do build com Python
 - Deploy no GitHub Pages pelo GitHub Actions (`.github/workflows/deploy.yml`)
 
 ## Rodar
