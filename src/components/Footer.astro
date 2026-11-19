@@ -1,0 +1,40 @@
+---
+import { ui, REPO, type Lang } from '../data/content';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang].footer;
+---
+<footer class="footer field-ink" data-field="ink">
+  <p>Fellipe Gabriel, 2026</p>
+  <p>{t.credits}</p>
+  <p><a href={REPO} target="_blank" rel="noopener">{t.source}</a></p>
+</footer>
+
+<style>
+  .footer {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--gutter);
+    padding: 1.5rem var(--pad) 1.75rem;
+    font-size: var(--step--1);
+    font-variation-settings: 'wdth' 112;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .footer p:nth-child(1) {
+    grid-column: 1 / span 3;
+  }
+  .footer p:nth-child(2) {
+    grid-column: 4 / span 6;
+  }
+  .footer p:nth-child(3) {
+    grid-column: 10 / span 3;
+    justify-self: end;
+  }
+  @media (max-width: 899px) {
+    .footer p:nth-child(n) {
+      grid-column: 1 / -1;
+      justify-self: start;
+    }
+  }
+</style>

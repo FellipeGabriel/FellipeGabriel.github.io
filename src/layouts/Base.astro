@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { ui, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+  altPath: string;
+  path: string;
+  page: 'home' | 'project';
+  projectName?: string;
+  topField?: 'orange' | 'ink' | 'paper' | 'cobalt';
+}
+
+const { lang, title, description, altPath, path, page, projectName, topField = 'orange' } = Astro.props;
+const t = ui[lang];
+const other: Lang = lang === 'pt' ? 'en' : 'pt';
+const site = Astro.site!;
+const canonical = new URL(path, site).href;
+const ogImage = new URL(`/og-${lang}.png`, site).href;
+const pageTitle = title ?? t.title;
+const pageDescription = description ?? t.description;
+---
+<!doctype html>
+<html lang={t.htmlLang} data-top-field={topField}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={ui[lang].htmlLang} href={canonical} />
+    <link rel="alternate" hreflang={ui[other].htmlLang} href={new URL(altPath, site).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', site).href} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#ff4f1a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === 'pt' ? 'pt_BR' : 'en_US'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline>
+      (function () {
+        var d = document.documentElement;
+        try {
+          if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('motion');
+        } catch (e) {}
+        setTimeout(function () { d.classList.add('motion-ready'); }, 2500);
+      })();
+    </script>
+  </head>
+  <body data-page={page}>
+    <a class="skip" href="#conteudo">{t.skip}</a>
+    <Nav lang={lang} altPath={altPath} page={page} projectName={projectName} />
+    <main id="conteudo" tabindex="-1">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    <script>
+      import '../scripts/site';
+    </script>
+  </body>
+</html>

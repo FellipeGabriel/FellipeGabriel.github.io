@@ -1,0 +1,204 @@
+---
+import { Picture } from 'astro:assets';
+import Icon from './Icon.astro';
+import cliffs from '../assets/space/cosmic-cliffs.jpg';
+import { ui, EMAIL, LINKEDIN, type Lang } from '../data/content';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang].hero;
+const lines = ['Fellipe', 'Gabriel'];
+---
+<section class="hero field-orange" data-field="orange" aria-labelledby="hero-title">
+  <figure class="hero-img" data-hero-img>
+    <div class="hero-img-inner" data-hero-img-inner>
+      <Picture
+        src={cliffs}
+        formats={['avif', 'webp']}
+        widths={[640, 960, 1400, 2000]}
+        sizes="(max-width: 760px) 100vw, 48vw"
+        alt=""
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+    <p class="hero-ghost display" aria-hidden="true">
+      {lines.map((l, i) => <span class="hero-line" data-hero-line={i}>{l}</span>)}
+    </p>
+  </figure>
+
+  <h1 id="hero-title" class="hero-title display">
+    {lines.map((l, i) => <span class="hero-line" data-hero-line={i}>{l}</span>)}
+  </h1>
+
+  <div class="hero-foot">
+    <p class="hero-role">{t.role}</p>
+    <p class="lead">{t.lead}</p>
+    <div class="hero-actions">
+      <div class="email-group" data-copy-group>
+        <a class="btn btn-solid email-link" href={`mailto:${EMAIL}`}>
+          <span class="visually-hidden">{t.emailCta}: </span>{EMAIL}
+        </a>
+        <button class="btn btn-solid copy-btn" type="button" data-copy={EMAIL} data-copied-label={t.copied} aria-label={t.copy}>
+          <Icon name="copy" class="icon icon-copy" /><Icon name="check" class="icon icon-check" />
+        </button>
+        <span class="visually-hidden" role="status" data-copy-status></span>
+      </div>
+      <a class="btn" href={LINKEDIN} rel="noopener" target="_blank">LinkedIn<Icon name="arrow-up-right" /></a>
+    </div>
+  </div>
+
+  <p class="hero-caption label">{t.caption}</p>
+</section>
+
+<style>
+  .hero {
+    --img-t: 4.75rem;
+    --img-l: 52cqw;
+    --title-size: 20.5cqw;
+    --title-top: calc(var(--img-t) + 9svh);
+    position: relative;
+    container-type: inline-size;
+    min-height: max(100svh, 46rem);
+    padding: var(--title-top) var(--pad) 5.5rem;
+    display: flex;
+    flex-direction: column;
+    overflow: clip;
+  }
+  .hero-title,
+  .hero-ghost {
+    font-size: var(--title-size);
+    line-height: 0.8;
+  }
+  .hero-title {
+    position: relative;
+    z-index: 2;
+    margin-left: -0.02em;
+  }
+  .hero-line {
+    display: block;
+    will-change: transform;
+  }
+  .hero-img {
+    position: absolute;
+    top: var(--img-t);
+    left: var(--img-l);
+    right: 0;
+    bottom: 4.5rem;
+    overflow: hidden;
+    z-index: 3;
+    background: var(--ink);
+  }
+  .hero-img-inner {
+    position: absolute;
+    inset: 0;
+  }
+  .hero-img-inner :global(picture),
+  .hero-img-inner :global(img) {
+    width: 100%;
+    height: 100%;
+  }
+  .hero-img-inner :global(img) {
+    object-fit: cover;
+    object-position: 36% 55%;
+  }
+  .hero-ghost {
+    position: absolute;
+    left: calc(var(--pad) - var(--img-l) - 0.02em);
+    top: calc(var(--title-top) - var(--img-t));
+    color: var(--paper);
+    pointer-events: none;
+    margin: 0;
+    white-space: nowrap;
+  }
+  .hero-foot {
+    position: relative;
+    z-index: 2;
+    margin-top: auto;
+    padding-top: clamp(2rem, 5svh, 4rem);
+    max-width: calc(var(--img-l) - var(--pad) * 2);
+    display: grid;
+    gap: 1rem;
+  }
+  .hero-role {
+    font-size: min(var(--step-3), 3.6cqw);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    font-variation-settings: 'wdth' 88;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .email-group {
+    display: flex;
+    min-width: 0;
+  }
+  .email-link {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .copy-btn {
+    border-left: 1px solid color-mix(in srgb, var(--solid-fg) 35%, transparent);
+    padding-inline: 1rem;
+  }
+  .copy-btn :global(.icon-check),
+  .copy-btn:global(.is-copied) :global(.icon-copy) {
+    display: none;
+  }
+  .copy-btn:global(.is-copied) :global(.icon-check) {
+    display: block;
+  }
+  .hero-caption {
+    position: absolute;
+    right: var(--pad);
+    bottom: 1.6rem;
+    z-index: 3;
+    max-width: 44cqw;
+    text-align: right;
+  }
+
+  @media (max-width: 760px) {
+    .hero {
+      --img-t: 3.75rem;
+      --img-l: 0cqw;
+      --img-h: 46svh;
+      --title-size: 24.5cqw;
+      --title-top: calc(var(--img-t) + var(--img-h) - var(--title-size) * 0.86);
+      min-height: 100svh;
+      padding-bottom: 3.5rem;
+    }
+    .hero-img {
+      bottom: auto;
+      height: var(--img-h);
+    }
+    .hero-foot {
+      max-width: none;
+      padding-top: 1.75rem;
+    }
+    .hero-role {
+      font-size: var(--step-3);
+    }
+    .hero-caption {
+      top: calc(var(--img-t) + var(--img-h) + 0.5rem);
+      bottom: auto;
+      right: var(--pad);
+      max-width: 60cqw;
+      color: var(--ink);
+      display: none;
+    }
+    .email-group {
+      width: 100%;
+    }
+    .email-link {
+      flex: 1;
+      font-size: clamp(0.78rem, 3.7vw, 0.95rem);
+      padding-inline: 0.85rem;
+      overflow-wrap: normal;
+      white-space: nowrap;
+    }
+  }
+</style>

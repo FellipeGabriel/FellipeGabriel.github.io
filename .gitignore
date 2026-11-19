@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+.impeccable/tmp/
+.impeccable/questions/
+.impeccable/live/
+*.log
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/build/

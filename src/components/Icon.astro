@@ -1,0 +1,17 @@
+---
+interface Props {
+  name: 'arrow-up-right' | 'arrow-right' | 'arrow-left' | 'copy' | 'check' | 'menu' | 'close';
+  class?: string;
+}
+const { name, class: cls = 'icon' } = Astro.props;
+const paths: Record<Props['name'], string> = {
+  'arrow-up-right': 'M7 17 17 7M8 7h9v9',
+  'arrow-right': 'M4 12h15M13 6l6 6-6 6',
+  'arrow-left': 'M20 12H5M11 6l-6 6 6 6',
+  copy: 'M9 9h11v11H9zM5 15H4V4h11v1',
+  check: 'M4 12.5 9.5 18 20 7',
+  menu: 'M3 7h18M3 17h18',
+  close: 'M5 5l14 14M19 5 5 19',
+};
+---
+<svg class={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true" focusable="false"><path d={paths[name]} /></svg>
