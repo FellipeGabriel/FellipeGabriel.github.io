@@ -5,14 +5,6 @@ export const LINKEDIN = 'https://www.linkedin.com/in/gabrielfellipe/';
 export const GITHUB = 'https://github.com/FellipeGabriel';
 export const REPO = 'https://github.com/FellipeGabriel/FellipeGabriel.github.io';
 
-/** Legendas em monoespaçada das imagens do Webb (objeto · instrumento). São identificadores, iguais em PT e EN. */
-export const spaceCaptions = {
-  cliffs: '\\ cosmic-cliffs · nircam \\',
-  galaxyPair: '\\ ic-2163 · ngc-2207 · miri \\',
-  horsehead: '\\ horsehead · nircam \\',
-  uranus: '\\ uranus · nircam \\',
-  sombrero: '\\ sombrero · miri \\',
-} as const;
 
 export const routes = {
   pt: { home: '/pt/', project: (slug: string) => `/pt/projetos/${slug}/` },
@@ -31,7 +23,6 @@ export const ui = {
     hero: {
       role: 'Desenvolvedor full stack',
       lead: 'Há quase 3 anos desenvolvo software para o mercado financeiro, com Node.js, React, TypeScript, PostgreSQL e Python.',
-      word: 'Explorar',
       emailCta: 'Enviar e-mail',
       copy: 'Copiar e-mail',
       copied: 'E-mail copiado',
@@ -40,7 +31,6 @@ export const ui = {
       heading: 'Projetos',
       lead: 'Dois projetos que você pode abrir agora: um painel público e um app na Google Play. Cada um tem uma página contando como foi feito.',
       howItWasMade: 'Como foi feito',
-      word: 'Construir',
     },
     work: {
       heading: 'Experiência',
@@ -60,10 +50,9 @@ export const ui = {
     contact: {
       heading: 'Contato',
       lead: 'Para falar sobre vagas ou sobre algum dos projetos, o caminho mais rápido é o e-mail.',
-      word: 'Conversar',
     },
     footer: {
-      credits: 'Imagens: NASA, ESA, CSA, STScI (CC BY 4.0)',
+      credits: 'Fotos: Wikimedia Commons (CC BY-SA 4.0) e Unsplash, créditos no código',
       source: 'Código deste site',
     },
     caseStudy: {
@@ -91,7 +80,6 @@ export const ui = {
     hero: {
       role: 'Full stack developer',
       lead: "I've spent nearly 3 years building software for the financial industry with Node.js, React, TypeScript, PostgreSQL, and Python.",
-      word: 'Explore',
       emailCta: 'Send an email',
       copy: 'Copy email',
       copied: 'Email copied',
@@ -100,7 +88,6 @@ export const ui = {
       heading: 'Projects',
       lead: 'Two projects you can open right now: a public dashboard and an app on Google Play. Each one has a page on how it was built.',
       howItWasMade: 'How it was built',
-      word: 'Build',
     },
     work: {
       heading: 'Experience',
@@ -120,10 +107,9 @@ export const ui = {
     contact: {
       heading: 'Contact',
       lead: 'To talk about a role or one of the projects, email is the fastest way to reach me.',
-      word: 'Talk',
     },
     footer: {
-      credits: 'Images: NASA, ESA, CSA, STScI (CC BY 4.0)',
+      credits: 'Photos: Wikimedia Commons (CC BY-SA 4.0) and Unsplash, credited in the source code',
       source: 'Source code for this site',
     },
     caseStudy: {

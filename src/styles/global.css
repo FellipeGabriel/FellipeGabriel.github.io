@@ -214,33 +214,6 @@ a {
   text-wrap: pretty;
 }
 
-/* Uma palavra serifada solta sobre a imagem (no máximo uma por imagem). */
-.film-word {
-  margin: 0;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  font-variation-settings: normal;
-  font-size: clamp(2rem, 1.1rem + 2.8vw, 4.5rem);
-  line-height: 1;
-  letter-spacing: -0.01em;
-  color: var(--paper);
-  pointer-events: none;
-  white-space: nowrap;
-}
-/* Legenda em monoespaçada, com barras: \ objeto · instrumento \ */
-.film-caption {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
-  font-weight: 450;
-  line-height: 1.35;
-  color: var(--paper);
-  background: var(--ink);
-  padding: 0.3rem 0.55rem;
-  pointer-events: none;
-  white-space: nowrap;
-}
 .prose p {
   max-width: 66ch;
   text-wrap: pretty;
