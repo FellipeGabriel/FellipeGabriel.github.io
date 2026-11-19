@@ -1,12 +1,12 @@
 ---
 name: Fellipe Gabriel, portfólio
-description: Portfólio bilíngue de um desenvolvedor full stack, montado como uma série de cartazes tipográficos suíços.
+description: Portfólio bilíngue de um desenvolvedor full stack, montado como uma série de cartazes tipográficos suíços com acabamento de película de cinema.
 colors:
-  deep-petrol: "#0f3640"
-  nebula-amber: "#f2b33d"
-  press-ink: "#0c1114"
-  poster-paper: "#e9eaea"
-  poster-paper-shade: "#d3d5d6"
+  deep-petrol: "#1e3a3c"
+  nebula-amber: "#d9a548"
+  press-ink: "#16130f"
+  poster-paper: "#f1ece2"
+  poster-paper-shade: "#ddd6c8"
   lyfia-cream: "#e9d9bb"
   recupera-green: "#94bd3b"
 typography:
@@ -37,12 +37,24 @@ typography:
     lineHeight: 1.5
     fontVariation: "'wdth' 100"
   lead:
-    fontFamily: "Archivo Variable, Archivo, system-ui, sans-serif"
-    fontSize: "clamp(1.2rem, 1.1rem + 0.45vw, 1.5rem)"
-    fontWeight: 450
-    lineHeight: 1.38
-    fontVariation: "'wdth' 100"
+    fontFamily: "Newsreader Variable, Newsreader, Georgia, serif"
+    fontSize: "calc(clamp(1.2rem, 1.1rem + 0.45vw, 1.5rem) * 1.08)"
+    fontWeight: 400
+    lineHeight: 1.3
+    letterSpacing: "-0.005em"
+  film-word:
+    fontFamily: "Newsreader Variable, Newsreader, Georgia, serif"
+    fontSize: "clamp(2rem, 1.1rem + 2.8vw, 4.5rem)"
+    fontWeight: 400
+    fontStyle: italic
+    lineHeight: 1
+    letterSpacing: "-0.01em"
   label:
+    fontFamily: "JetBrains Mono Variable, JetBrains Mono, ui-monospace, monospace"
+    fontSize: "clamp(0.8125rem, 0.78rem + 0.15vw, 0.9rem)"
+    fontWeight: 480
+    lineHeight: 1.35
+  nav:
     fontFamily: "Archivo Variable, Archivo, system-ui, sans-serif"
     fontSize: "clamp(0.8125rem, 0.78rem + 0.15vw, 0.9rem)"
     fontWeight: 650
@@ -85,15 +97,17 @@ components:
 
 ## Overview
 
-**Creative North Star: "A parede de cartazes"**
+**Creative North Star: "A parede de cartazes, filmada"**
 
 Cada seção é um cartaz impresso: um campo de cor chapada ocupa a tela inteira, o título é uma grotesca condensada no tamanho máximo que a largura do cartaz aguenta, e a fotografia entra recortada em retângulo reto, sem moldura. A página se lê como uma sequência de cartazes colados lado a lado. Na home, os projetos ficam literalmente numa parede que corre na horizontal.
 
-O gesto que define o sistema é o texto atravessando a imagem: quando o título cruza a borda de uma foto ou de uma placa de captura de tela, a cor das letras troca exatamente nessa borda. Fora disso, o sistema é seco. Sem raio, sem sombra, sem gradiente, sem ícone decorativo. A hierarquia vem só de escala, peso e largura da fonte.
+O gesto que define o sistema é o texto atravessando a imagem: quando o título cruza a borda de uma foto ou de uma placa de captura de tela, a cor das letras troca exatamente nessa borda. Fora disso, o sistema é seco. Sem raio, sem sombra, sem gradiente, sem ícone decorativo. A hierarquia vem de escala, peso e largura da fonte, e de três vozes tipográficas com papéis fixos.
 
-As imagens do espaço (James Webb) são material de cartaz, não tema. Elas aparecem em cor plena, cortadas no grid, e nunca carregam texto temático.
+Por cima dessa estrutura vai um acabamento de película: cores quentes e contidas, pretos levemente lavados, halação nas luzes das fotos, grão de filme em movimento sobre a página toda e tipografia editorial (uma serifada para a frase de abertura, uma monoespaçada para rótulos e legendas). O acabamento não muda a estrutura; é a textura do papel e da luz.
 
-O movimento segue a mesma lógica de cartaz. Na primeira visita da sessão, um carregamento em tinta mostra um contador de 000 a 100 com a nebulosa por dentro dos números; ao terminar, as 12 colunas do grid sobem uma a uma e revelam o hero. Ao rolar, cada seção depois dos projetos se expande de cartaz recortado até a borda, e cada uma tem a sua entrada tipográfica: letras alternadas (Experiência), letras crescendo como barras com varredura em âmbar e anos em odômetro (Publicações), letras deslizando inclinadas (Sobre), letras espalhadas que se montam (Contato).
+As imagens do espaço (James Webb) são material de cartaz, não tema. Fotos sempre com a gradação Halação (`scripts/film-grade.py`); grão animado global; nunca gradiente decorativo. Elas aparecem cortadas no grid e nunca carregam texto temático; o que vai sobre elas é uma legenda técnica em mono e, no máximo, uma palavra serifada.
+
+O movimento segue a mesma lógica de cartaz. Na primeira visita da sessão, um carregamento em tinta mostra um contador de 000 a 100 com a nebulosa por dentro dos números; no fim da contagem o campo vira creme com o nome em tinta, e as 12 colunas do grid sobem uma a uma e revelam o hero. Ao rolar, cada seção depois dos projetos se expande de cartaz recortado até a borda, e cada uma tem a sua entrada tipográfica: letras alternadas (Experiência), letras crescendo como barras com varredura em âmbar e anos em odômetro (Publicações), letras deslizando inclinadas (Sobre), letras espalhadas que se montam (Contato). O site termina em creme, no rodapé.
 
 **Key Characteristics:**
 - Um campo de cor por seção, de borda a borda.
@@ -101,10 +115,14 @@ O movimento segue a mesma lógica de cartaz. Na primeira visita da sessão, um c
 - Troca de cor do texto na borda da imagem.
 - Zero raio, zero sombra, fios de 2px.
 - Rolagem suave com uma parede horizontal fixada para os projetos.
+- Fotos com gradação de filme, grão animado global, paleta quente.
+- Três vozes: Archivo (títulos, navegação, corpo), Newsreader (lead e palavra solta), JetBrains Mono (rótulos e legendas).
 
 ## Colors
 
-Petróleo e âmbar tirados da própria imagem dos Cosmic Cliffs (o céu e as nuvens), mais tinta e papel; cada seção escolhe um campo e as outras cores viram texto e destaque sobre ele.
+Petróleo e âmbar tirados da própria imagem dos Cosmic Cliffs (o céu e as nuvens), mais tinta e papel, todos puxados para o quente e dessaturados como cor de película: papel creme em vez de cinza, carvão quente em vez de preto azulado. Cada seção escolhe um campo e as outras cores viram texto e destaque sobre ele.
+
+Contraste WCAG das combinações permitidas (texto/campo): papel/petróleo 10.34, âmbar/petróleo 5.46, tinta/âmbar 8.31, papel/tinta 15.73, âmbar/tinta 8.31, tinta/papel 15.73, petróleo/papel 10.34, tinta/creme do Lyfia 13.32, tinta/verde do RecuperAVC 8.47. Todas acima de 4.5:1.
 
 ### Primary
 - **Petróleo profundo** (deep-petrol): campo do hero, do cartaz do Lyfia e do cabeçalho do estudo de caso do Lyfia; destaque sobre papel.
@@ -113,8 +131,8 @@ Petróleo e âmbar tirados da própria imagem dos Cosmic Cliffs (o céu e as nuv
 - **Âmbar de nebulosa** (nebula-amber): a cor de contraste. Nome no hero, título do RecuperAVC, anos das publicações, botão sólido sobre petróleo e preto, e o campo inteiro do contato. Nunca como texto sobre papel.
 
 ### Neutral
-- **Tinta de prensa** (press-ink): texto sobre âmbar e papel; campo das publicações, do cartaz do RecuperAVC e do rodapé.
-- **Papel de cartaz** (poster-paper): campo das seções de leitura; texto sobre petróleo, preto e imagem.
+- **Tinta de prensa** (press-ink): texto sobre âmbar e papel; campo das publicações e do cartaz do RecuperAVC; fundo das legendas mono sobre imagem.
+- **Papel de cartaz** (poster-paper): campo das seções de leitura, do fim do carregamento e do rodapé; texto sobre petróleo, preto e imagem.
 - **Sombra do papel** (poster-paper-shade): fundo de placa enquanto a imagem carrega.
 
 ### Placas de projeto
@@ -129,24 +147,36 @@ Petróleo e âmbar tirados da própria imagem dos Cosmic Cliffs (o céu e as nuv
 
 ## Typography
 
-**Display Font:** Archivo Variable, eixo de largura 62 (com Archivo e system-ui de reserva)
-**Body Font:** Archivo Variable, largura 100
-**Label Font:** Archivo Variable, largura 112
+**Display Font:** Archivo Variable, eixo de largura 62 (com Archivo e system-ui de reserva), token `--font`
+**Body Font:** Archivo Variable, largura 100, token `--font`
+**Serif Font:** Newsreader Variable, eixo de peso, regular e itálico (Georgia de reserva), token `--font-serif`
+**Mono Font:** JetBrains Mono Variable, eixo de peso, só normal (ui-monospace de reserva), token `--font-mono`
 
-**Character:** Uma família só, trabalhada pelo eixo de largura: condensada e pesada no display, normal no texto, um pouco expandida nos rótulos. É o equivalente digital da grotesca de cartaz suíço.
+**Character:** A Archivo continua sendo a grotesca de cartaz suíço, trabalhada pelo eixo de largura: condensada e pesada no display, normal no texto, expandida na navegação. A Newsreader é a voz editorial, a frase de abertura dita em tom de legenda de filme. A JetBrains Mono é a voz técnica, a etiqueta de arquivo e a borda da película.
+
+### Onde cada fonte pode aparecer
+- **Archivo:** títulos (display e headline), navegação e menu, cargo e títulos de publicação, corpo de texto, botões e links, rodapé. Tudo o que não está listado abaixo.
+- **Newsreader:** só a frase de abertura de cada cartaz (`.lead`: hero, abertura de Projetos, cartazes de projeto, Contato, cabeçalho do estudo de caso) e a palavra solta sobre foto (`.film-word`).
+- **JetBrains Mono:** só rótulos (`.label`: período, categoria do projeto, status, títulos de grupo, metadados, QR code) e legendas (`.caption` e `.film-caption`), peso 400 a 500, no tamanho do rótulo.
 
 ### Hierarchy
-- **Display** (900, ajustada à largura do cartaz, entrelinha 0.8, caixa alta): nome no hero, títulos de seção, nomes de projeto, ano das publicações.
-- **Headline** (900, largura 62, caixa alta): títulos das partes dos estudos de caso.
-- **Title** (800, largura 88): cargo, títulos de publicação.
-- **Lead** (450, 34ch no máximo): a frase que abre cada cartaz.
-- **Body** (400, 66ch no máximo): texto corrido dos estudos de caso.
-- **Label** (650, largura 112, +0.02em): navegação, período, legenda de imagem, rodapé.
+- **Display** (Archivo 900, ajustada à largura do cartaz, entrelinha 0.8, caixa alta): nome no hero, títulos de seção, nomes de projeto, ano das publicações.
+- **Headline** (Archivo 900, largura 62, caixa alta): títulos das partes dos estudos de caso.
+- **Title** (Archivo 800, largura 88): cargo, títulos de publicação.
+- **Lead** (Newsreader 400, 34ch no máximo): a frase que abre cada cartaz.
+- **Film word** (Newsreader itálico 400, cor papel): uma palavra solta sobre uma foto.
+- **Body** (Archivo 400, 66ch no máximo): texto corrido dos estudos de caso.
+- **Label** (JetBrains Mono 480): período, categoria, status, metadados, legenda de imagem. Identificadores vão entre barras: `\ lyfia-hemodialise-sus \`, `\ cosmic-cliffs · nircam \`.
+- **Nav** (Archivo 650, largura 112, +0.02em): navegação e rodapé.
 
 ### Named Rules
 **The Fill the Sheet Rule.** O título de seção ocupa a largura do cartaz. O tamanho é medido pelo script (`data-fit`), com um valor em `vw` de reserva sem JavaScript; nunca quebra no meio da palavra.
 
 **The Same Cap Height Rule.** Nomes de projeto que dividem a parede têm a mesma altura de letra. O nome curto é alargado no eixo de largura (125), não aumentado.
+
+**The One Word Rule.** No máximo uma palavra serifada por imagem: solta, em itálico, cor papel, sobre uma área escura da foto (contraste medido acima de 3:1). Hoje: Explorar/Explore no hero, Construir/Build na abertura de Projetos (escondida abaixo de 900px, onde o recorte só mostra o centro claro das galáxias) e Conversar/Talk no Contato. A palavra é decorativa (`aria-hidden`) e existe nas duas línguas.
+
+**The Slash Caption Rule.** Legendas e identificadores em mono vão entre barras invertidas, em minúsculas e com hífens (`\ objeto · instrumento \`). Sobre foto, a legenda fica num bloco de tinta sólida, como os outros textos pequenos sobre imagem. São identificadores, iguais em PT e EN.
 
 ## Layout
 
@@ -158,14 +188,25 @@ Mais espaço acima do título do que abaixo; as seções abrem com `clamp(5rem, 
 
 ## Elevation & Depth
 
-Plano. O sistema não usa sombra. A profundidade vem da sobreposição de camadas planas: título sob a placa, placa sobre o campo, cópia do título dentro da placa em outra cor. O único movimento de profundidade é o deslocamento em velocidades diferentes (parallax) das capturas dentro das placas durante a rolagem.
+Plano. O sistema não usa sombra. A profundidade vem da sobreposição de camadas planas: título sob a placa, placa sobre o campo, cópia do título dentro da placa em outra cor, cartaz rasgado sobre a foto. O único movimento de profundidade é o deslocamento em velocidades diferentes (parallax) das capturas dentro das placas e da foto atrás das bordas rasgadas durante a rolagem.
+
+### Película
+- **Gradação "Halação":** toda foto do Webb passa por `scripts/film-grade.py` antes do build (originais em `src/assets/space/raw/`): curva em S com pretos lavados, saturação a ~75%, sombras para o petróleo e luzes para o âmbar, bloom, halação vermelho-alaranjada nas luzes, separação de cor nas bordas, vinheta quente e grão fino. Nunca `filter` em CSS.
+- **Grão animado global** (`FilmGrain.astro`): uma camada fixa de ruído em `overlay` que muda de posição 8 vezes por segundo (só `transform`). Fica abaixo do carregamento (z 200) e da cortina de transição (z 300). A opacidade segue o campo sob a navegação para o grão ter o mesmo peso em todos (papel 0.26, tinta 0.22, petróleo 0.10, âmbar 0.07): visível de perto, invisível de longe.
+- **Oscilação de projetor:** opacidade de 0.97 a 1 em `steps`, só nas imagens grandes (hero, abertura de Projetos, Contato).
+- Grão, oscilação e parallax ficam desligados com `prefers-reduced-motion`.
 
 ### Named Rules
 **The Flat Print Rule.** Nada flutua. Se um elemento precisa se destacar, ele muda de campo, de escala ou de cor, nunca ganha sombra.
 
 ## Shapes
 
-Retângulos retos em tudo: placas, botões, menu, capturas. Raio zero. Divisões com fio de 2px na cor do texto do campo; separadores internos de lista com 1px a 25–40% de opacidade. Molduras de celular são bordas pretas de 6px, sem cantos arredondados.
+Retângulos retos em tudo: placas, botões, menu, capturas. Raio zero. Divisões com fio de 2px na cor do texto do campo; separadores internos de lista com 1px a 25–40% de opacidade. Molduras de celular são bordas pretas de 6px, sem cantos arredondados. A única borda irregular do sistema é a borda rasgada da colagem.
+
+### Colagem
+Só dois recursos, os dois gerados por `scripts/collage.py` (SVG próprio, nada de imagem de terceiros):
+- **Borda rasgada** (`Tear.astro`): na passagem de Projetos para Experiência (Sombrero) e de Sobre para Contato (Horsehead), uma faixa mostra a foto do Webb por trás do cartaz de cima arrancado. Duas máscaras SVG (`mask-image` e `-webkit-mask-image`) recortam as cores dos dois campos; por baixo de cada borda, a mesma máscara deslocada alguns pixels mostra a fibra do papel (papel sobre campos escuros, sombra do papel sobre papel).
+- **Linhas de mapa** (`public/collage/contours.svg`): curvas de nível finas, cor papel a 35%, só no cartaz do Lyfia que fica sobre foto (o bloco "Próximo projeto: Lyfia", sobre o Sombrero). Ecoam o mapa do produto sem cobrir a placa de captura.
 
 ## Components
 
@@ -188,7 +229,10 @@ Retângulos retos em tudo: placas, botões, menu, capturas. Raio zero. Divisões
 - Google Play com o logo oficial, GitHub com o símbolo em SVG, endereço web com seta. No RecuperAVC, um QR code em SVG (tinta sobre papel) leva à loja; só aparece a partir de 900px.
 
 ### Imagem com título
-- Abertura de Projetos e bloco "Próximo projeto": imagem do Webb de borda a borda com o título em display por cima; textos menores ficam em blocos de tinta sólida.
+- Abertura de Projetos e bloco "Próximo projeto": imagem do Webb de borda a borda com o título em display por cima; textos menores (rótulos e legendas mono) ficam em blocos de tinta sólida.
+
+### Rodapé
+- Campo papel com o nome em tinta (800): o site abre e fecha em creme.
 
 ## Do's and Don'ts
 
@@ -197,11 +241,16 @@ Retângulos retos em tudo: placas, botões, menu, capturas. Raio zero. Divisões
 - **Do** ajustar o título de seção à largura do cartaz com `data-fit` e manter um tamanho em `vw` de reserva.
 - **Do** usar a troca de cor na borda da imagem quando o texto cruzar uma placa.
 - **Do** manter fotos e capturas em retângulos retos, sem moldura; o crédito das imagens do Webb fica no rodapé, em uma linha.
-- **Do** desligar Lenis, a parede horizontal, o carregamento e as entradas animadas com `prefers-reduced-motion`.
+- **Do** passar toda foto pela gradação Halação (`scripts/film-grade.py`) e regerar a partir de `raw/`; manter o grão animado global sobre a página.
+- **Do** usar no máximo uma palavra serifada por imagem e escrever legendas e identificadores em mono, entre barras.
+- **Do** desligar Lenis, a parede horizontal, o carregamento, as entradas animadas, o grão, a oscilação e o parallax com `prefers-reduced-motion`.
 - **Do** dar a cada seção uma entrada própria dentro da mesma gramática (máscara, varredura, escala), nunca a mesma animação repetida.
 
 ### Don't:
-- **Don't** usar raio, sombra, gradiente ou vidro.
+- **Don't** usar raio, sombra, gradiente decorativo ou vidro.
+- **Don't** aplicar `filter` de cor em CSS nas fotos; a gradação é feita uma vez, na pré-produção.
+- **Don't** usar outros recursos de colagem além da borda rasgada e das linhas de mapa.
+- **Don't** usar a serifada ou a mono fora dos lugares listados em Typography.
 - **Don't** colocar rótulo ou sobretítulo pequeno acima de um título; status e categoria vêm depois do título.
 - **Don't** usar âmbar como texto sobre papel, nem tinta sobre petróleo.
 - **Don't** usar frases temáticas ou trocadilhos de espaço; as imagens do Webb são material, não assunto.

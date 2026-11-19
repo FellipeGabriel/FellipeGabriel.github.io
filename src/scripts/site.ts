@@ -311,6 +311,18 @@ function contactMotion() {
   });
 }
 
+function tearMotion() {
+  $$('[data-tear]').forEach((tear) => {
+    const img = $('[data-tear-img]', tear);
+    if (!img) return;
+    gsap.fromTo(img, { yPercent: -10 }, {
+      yPercent: 10,
+      ease: 'none',
+      scrollTrigger: { trigger: tear, start: 'top bottom', end: 'bottom top', scrub: true },
+    });
+  });
+}
+
 function caseMotion() {
   const plate = $('[data-case-plate] img');
   if (plate) {
@@ -355,6 +367,7 @@ if (reduceMotion) {
     splitHeadings();
     projectsWall();
     contactMotion();
+    tearMotion();
     caseMotion();
     sectionReveals();
     initNavTriggers();
