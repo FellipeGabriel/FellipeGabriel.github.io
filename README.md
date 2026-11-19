@@ -30,7 +30,9 @@ npm run build    # gera dist/
 Imagens do espaço do telescópio James Webb: NASA, ESA, CSA e STScI, via [ESA/Webb](https://esawebb.org/copyright/) (CC BY 4.0).
 
 - `src/assets/space/cosmic-cliffs.jpg`: Carina Nebula, NIRCam. Crédito: NASA, ESA, CSA, and STScI, J. DePasquale (STScI). https://esawebb.org/images/carinanebula3/
-- `src/assets/space/nebulous-cauldron.jpg`: N159, NIRCam. Crédito: ESA/Webb, NASA & CSA, E. Sabbi, M. Zamani (ESA/Webb). https://esawebb.org/images/potm2610a/
-- `src/assets/space/pismis-24.jpg`: Pismis 24, NIRCam. Crédito: NASA, ESA, CSA, and STScI, A. Pagan (STScI). https://esawebb.org/images/weic2518a/
+- `src/assets/space/galaxy-pair.jpg`: IC 2163 e NGC 2207. Crédito: NASA, ESA, CSA, STScI. https://esawebb.org/images/weic2426a/
+- `src/assets/space/jupiter.jpg`: Júpiter, NIRCam. Crédito: NASA, ESA, Jupiter ERS Team; image processing by Judy Schmidt. https://esawebb.org/images/jupiter-auroras1/
+- `src/assets/space/horsehead.jpg`: Nebulosa Cabeça de Cavalo, NIRCam. Crédito: ESA/Webb, NASA, CSA, K. Misselt (University of Arizona) and A. Abergel (IAS/University Paris-Saclay, CNRS). https://esawebb.org/images/weic2411a/
+- `src/assets/space/sombrero.jpg`: Galáxia Sombrero, MIRI. Crédito: NASA, ESA, CSA, STScI. https://esawebb.org/images/weic2427a/
 
 Capturas de tela e ícones dos projetos (Lyfia e RecuperAVC): do próprio autor. Logo do Google Play: Google LLC.

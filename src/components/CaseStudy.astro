@@ -4,8 +4,8 @@ import Base from '../layouts/Base.astro';
 import Icon from './Icon.astro';
 import ProjectLink from './ProjectLink.astro';
 import QrCode from './QrCode.astro';
-import cliffs from '../assets/space/cosmic-cliffs.jpg';
-import pismis from '../assets/space/pismis-24.jpg';
+import horsehead from '../assets/space/horsehead.jpg';
+import sombrero from '../assets/space/sombrero.jpg';
 import { ui, routes, publications, type Lang } from '../data/content';
 import { projects, otherSlug, type Slug } from '../data/projects';
 import { sectionIds } from '../data/sections';
@@ -18,7 +18,7 @@ const p = projects[lang].find((x) => x.slug === slug)!;
 const next = projects[lang].find((x) => x.slug === otherSlug(slug))!;
 const pubs = publications[lang].filter((x) => x.project === slug);
 const nextField = next.field;
-const nextImage = slug === 'lyfia' ? pismis : cliffs;
+const nextImage = slug === 'lyfia' ? horsehead : sombrero;
 const title = `${p.name}: ${p.kind}. ${ui[lang].title.split(',')[0]}`;
 ---
 <Base

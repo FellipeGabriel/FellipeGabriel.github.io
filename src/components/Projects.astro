@@ -3,7 +3,7 @@ import { Picture } from 'astro:assets';
 import Icon from './Icon.astro';
 import ProjectLink from './ProjectLink.astro';
 import QrCode from './QrCode.astro';
-import cauldron from '../assets/space/nebulous-cauldron.jpg';
+import galaxyPair from '../assets/space/galaxy-pair.jpg';
 import { ui, routes, type Lang } from '../data/content';
 import { projects } from '../data/projects';
 import { sectionIds } from '../data/sections';
@@ -18,7 +18,7 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
   <div class="track" data-track>
     <div class="panel panel-intro field-ink" data-field="ink">
       <div class="intro-img" aria-hidden="true">
-        <Picture src={cauldron} formats={['avif', 'webp']} widths={[800, 1400, 2200]} sizes="100vw" alt="" loading="lazy" />
+        <Picture src={galaxyPair} formats={['avif', 'webp']} widths={[800, 1400, 2200]} sizes="100vw" alt="" loading="lazy" />
       </div>
       <h2 id="projects-title" class="display intro-title" data-fit data-split>{t.heading}</h2>
       <div class="intro-foot">
@@ -121,7 +121,7 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
   }
   .intro-img :global(img) {
     object-fit: cover;
-    object-position: 50% 45%;
+    object-position: 50% 55%;
   }
   .intro-title {
     position: relative;
@@ -256,19 +256,26 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
     border: 6px solid var(--ink);
     z-index: 3;
   }
+  .project-recuperavc {
+    --qr-size: 6.5rem;
+    --qr-top: calc(var(--title-top) + var(--title-size) * 0.8 - var(--plate-t) + 1.25rem);
+    --phones-top: calc(var(--qr-top) + var(--qr-size) + 1.25rem);
+  }
   .phones {
     position: absolute;
+    top: var(--phones-top, 6%);
     left: 3%;
     right: 3%;
-    bottom: 6%;
+    bottom: 5%;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: stretch;
     gap: 3%;
   }
   .phone {
     flex: none;
-    width: 29%;
+    height: 100%;
+    width: auto;
     aspect-ratio: 720 / 1530;
     border: 6px solid var(--ink);
     background: var(--ink);
@@ -276,14 +283,24 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
   }
   .project-plate :global(.plate-qr) {
     position: absolute;
-    top: 1.25rem;
+    top: var(--qr-top);
     right: 1.25rem;
     z-index: 3;
     flex-direction: row-reverse;
+    align-items: center;
     color: var(--ink);
   }
   .project-plate :global(.plate-qr .qr-code) {
-    width: 6.5rem;
+    width: var(--qr-size);
+  }
+  .project-plate :global(.plate-qr .qr-label) {
+    max-width: 17ch;
+    text-align: right;
+    font-weight: 750;
+    font-size: var(--step-0);
+    line-height: 1.2;
+    letter-spacing: 0;
+    font-variation-settings: 'wdth' 100;
   }
 
   .project-body {
@@ -385,6 +402,9 @@ const titleWidth = (name: string) => (name.length <= 6 ? 125 : 62);
     }
     .project-ghost {
       display: none;
+    }
+    .project-recuperavc {
+      --phones-top: 6%;
     }
     .project-lyfia .shot-main {
       inset: 0;

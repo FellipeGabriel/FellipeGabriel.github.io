@@ -124,7 +124,7 @@ export const projects: Record<Lang, Project[]> = {
         { src: recFala, alt: 'Teste de fala durante a gravação: a frase a pronunciar e o botão para cancelar.' },
         { src: recPreferencias, alt: 'Preferências do app no modo escuro: alto contraste, modo escuro e tamanho do texto.' },
       ],
-      qr: { url: 'https://play.google.com/store/apps/details?id=com.recuperavc', label: 'Aponte a câmera do celular para abrir na Google Play.' },
+      qr: { url: 'https://play.google.com/store/apps/details?id=com.recuperavc', label: 'Aponte a câmera para abrir na Google Play.' },
       meta: [
         { label: 'Ano', value: '2025–2026' },
         { label: 'Tipo', value: 'TCC na UFPR' },
@@ -248,7 +248,7 @@ export const projects: Record<Lang, Project[]> = {
         { src: recFala, alt: 'Speech test while recording: the sentence to read and the cancel button.' },
         { src: recPreferencias, alt: 'App preferences in dark mode: high contrast, dark mode, and text size.' },
       ],
-      qr: { url: 'https://play.google.com/store/apps/details?id=com.recuperavc', label: 'Point your phone camera here to open it on Google Play.' },
+      qr: { url: 'https://play.google.com/store/apps/details?id=com.recuperavc', label: 'Scan to open it on Google Play.' },
       meta: [
         { label: 'Year', value: '2025–2026' },
         { label: 'Type', value: 'Capstone project at UFPR' },

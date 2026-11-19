@@ -226,17 +226,25 @@ function projectsWall() {
   const mm = gsap.matchMedia();
   mm.add('(min-width: 900px)', () => {
     const distance = () => track.scrollWidth - window.innerWidth;
+    const travel = () => distance() * 1.4;
+    const hold = () => window.innerHeight * 1.3;
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'top top',
+      end: () => `+=${travel() + hold()}`,
+      pin: true,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+    });
     const wall = gsap.to(track, {
       x: () => -distance(),
       ease: 'none',
       scrollTrigger: {
         trigger: section,
         start: 'top top',
-        end: () => `+=${distance() * 1.4}`,
-        pin: true,
+        end: () => `+=${travel()}`,
         scrub: 0.6,
         invalidateOnRefresh: true,
-        anticipatePin: 1,
         onUpdate: (self) => gsap.set('[data-track-progress]', { scaleX: self.progress }),
       },
     });
