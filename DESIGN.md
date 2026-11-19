@@ -93,6 +93,8 @@ O gesto que define o sistema é o texto atravessando a imagem: quando o título 
 
 As imagens do espaço (James Webb) são material de cartaz, não tema. Elas aparecem em cor plena, cortadas no grid, e nunca carregam texto temático.
 
+O movimento segue a mesma lógica de cartaz. Na primeira visita da sessão, um carregamento em tinta mostra um contador de 000 a 100 com a nebulosa por dentro dos números; ao terminar, as 12 colunas do grid sobem uma a uma e revelam o hero. Ao rolar, cada seção depois dos projetos se expande de cartaz recortado até a borda, e cada uma tem a sua entrada tipográfica: letras alternadas (Experiência), letras crescendo como barras com varredura em âmbar e anos em odômetro (Publicações), letras deslizando inclinadas (Sobre), letras espalhadas que se montam (Contato).
+
 **Key Characteristics:**
 - Um campo de cor por seção, de borda a borda.
 - Títulos em Archivo condensada, ajustados por script à largura do cartaz.
@@ -195,7 +197,8 @@ Retângulos retos em tudo: placas, botões, menu, capturas. Raio zero. Divisões
 - **Do** ajustar o título de seção à largura do cartaz com `data-fit` e manter um tamanho em `vw` de reserva.
 - **Do** usar a troca de cor na borda da imagem quando o texto cruzar uma placa.
 - **Do** manter fotos e capturas em retângulos retos, sem moldura; o crédito das imagens do Webb fica no rodapé, em uma linha.
-- **Do** desligar Lenis, a parede horizontal e as entradas animadas com `prefers-reduced-motion`.
+- **Do** desligar Lenis, a parede horizontal, o carregamento e as entradas animadas com `prefers-reduced-motion`.
+- **Do** dar a cada seção uma entrada própria dentro da mesma gramática (máscara, varredura, escala), nunca a mesma animação repetida.
 
 ### Don't:
 - **Don't** usar raio, sombra, gradiente ou vidro.

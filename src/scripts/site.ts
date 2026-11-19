@@ -2,6 +2,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import Lenis from 'lenis';
+import { runLoader } from './loader';
+import { sectionReveals } from './reveals';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -174,20 +176,21 @@ function watchFit() {
 
 function initLenis() {
   lenis = new Lenis({ lerp: 0.11, wheelMultiplier: 0.95, anchors: { offset: 0 } });
+  if (root.classList.contains('is-loading')) lenis.stop();
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((time) => lenis?.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
 }
 
-function heroMotion() {
+function heroMotion(): gsap.core.Timeline | null {
   const hero = $('.hero');
-  if (!hero) return;
+  if (!hero) return null;
   const lines0 = $$('[data-hero-line="0"]', hero);
   const lines1 = $$('[data-hero-line="1"]', hero);
   const img = $('[data-hero-img]', hero);
   const inner = $('[data-hero-img-inner]', hero);
 
-  const intro = gsap.timeline({ defaults: { ease: 'expo.out' } });
+  const intro = gsap.timeline({ paused: true, defaults: { ease: 'expo.out' } });
   if (img) intro.from(img, { clipPath: 'inset(0 0 100% 0)', duration: 1.4 }, 0);
   if (inner) intro.from(inner, { scale: 1.18, duration: 2 }, 0);
   intro.from([...lines0, ...lines1], { yPercent: 70, opacity: 0, duration: 1.2, stagger: 0.09 }, 0.15);
@@ -199,10 +202,11 @@ function heroMotion() {
   out.to(lines0, { xPercent: -22, ease: 'none' }, 0);
   out.to(lines1, { xPercent: 16, ease: 'none' }, 0);
   if (inner) out.to(inner, { yPercent: 14, ease: 'none' }, 0);
+  return intro;
 }
 
 function splitHeadings() {
-  $$('[data-split]').forEach((el) => {
+  $$('.intro-title[data-split]').forEach((el) => {
     const split = SplitText.create(el, { type: 'lines,chars', mask: 'lines', linesClass: 'split-line' });
     gsap.from(split.chars, {
       yPercent: 105,
@@ -334,17 +338,21 @@ if (reduceMotion) {
   initLenis();
   initNav();
   initMenu();
-  document.fonts.ready.then(() => {
+  document.fonts.ready.then(async () => {
     fitHeadings();
     watchFit();
-    heroMotion();
+    const intro = heroMotion();
     splitHeadings();
     projectsWall();
     contactMotion();
     caseMotion();
+    sectionReveals();
     initNavTriggers();
     root.classList.add('motion-ready');
     ScrollTrigger.refresh();
+    await runLoader();
+    lenis?.start();
+    intro?.play();
     if (location.hash) requestAnimationFrame(() => scrollToHash(location.hash, true));
   });
 }

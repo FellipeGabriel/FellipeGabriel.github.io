@@ -112,6 +112,21 @@
         "name": "wall-scrub",
         "value": "ScrollTrigger scrub 0.6, pin da seção de projetos",
         "purpose": "Parede horizontal de cartazes."
+      },
+      {
+        "name": "loader",
+        "value": "contador 000-100 com background-clip:text da nebulosa; saída em 12 colunas scaleY, expo.inOut 1.1s, stagger 0.045",
+        "purpose": "Primeira visita da sessão (sessionStorage fg-loaded)."
+      },
+      {
+        "name": "poster-paste",
+        "value": "clip-path inset(7% 5% 0 5%) -> inset(0), scrub 0.6 entre top bottom e top 25%",
+        "purpose": "Entrada de Experiência, Publicações, Sobre e Contato."
+      },
+      {
+        "name": "section-entrances",
+        "value": "SplitText chars: alternado (Experiência), scaleY (Publicações), xPercent+skew do fim (Sobre), aleatório (Contato); expo.out 1.1-1.7s",
+        "purpose": "Uma entrada por seção dentro da mesma gramática."
       }
     ],
     "breakpoints": [
@@ -211,7 +226,8 @@
       "Do ajustar o título de seção à largura do cartaz com data-fit e manter um tamanho em vw de reserva.",
       "Do usar a troca de cor na borda da imagem quando o texto cruzar uma placa.",
       "Do manter fotos e capturas em retângulos retos, sem moldura, o crédito das imagens do Webb fica no rodapé, em uma linha.",
-      "Do desligar Lenis, a parede horizontal e as entradas animadas com prefers-reduced-motion."
+      "Do desligar Lenis, a parede horizontal, o carregamento e as entradas animadas com prefers-reduced-motion.",
+      "Do dar a cada seção uma entrada própria dentro da mesma gramática (máscara, varredura, escala), nunca a mesma animação repetida."
     ],
     "donts": [
       "Don't usar raio, sombra, gradiente ou vidro.",
